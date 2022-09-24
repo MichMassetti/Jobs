@@ -153,7 +153,6 @@ interface IPancakeRouter01 {
 
     function getAmountsIn(uint256 amountOut, address[] calldata path) external view returns (uint256[] memory amounts);
 }
-// SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.6.2;
 
 interface IPancakeRouter02 is IPancakeRouter01 {
@@ -245,7 +244,7 @@ contract ShibAfrica {
     
     //RICORDATI LE TASSE
     function buyPackage(address payable referral, uint package, uint amount)  
-        internal payable validPackage(package) returns(bool){
+        public payable validPackage(package) returns(bool){
             if(package==levels[msg.sender]+1) levels[msg.sender]=package;
 
             uint referral_amount = 35*amount/100;//OK   //un utente può comprare più pacchetti ma solo consecutivamente
@@ -263,7 +262,11 @@ contract ShibAfrica {
             owner.transfer(owner_amount);
 
             //BUY WITH PANCAKE SWAP
-            IPancakeRouter02(ROUTER).swapExactETHForTokens{value:amount}(0, [WBNB,SHIBAFRICA], msg.sender, block.timestamp+(block.timestamp/1000));
+            address[] memory path;
+            path = new address[](2);
+            path[0]=WBNB;
+            path[1]=SHIBAFRICA;
+            IPancakeRouter02(ROUTER).swapExactETHForTokens{value:amount}(0, path, msg.sender, block.timestamp+(block.timestamp/1000));
 
             return true;
     }

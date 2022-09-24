@@ -220,6 +220,226 @@
         "SafeMath",
         "Shiba2R"
       ]
+    },
+    "/home/peterbruegel/GitHub/Jobs/ShibAfrica/contracts/Setup/Factory.sol": {
+      "lastModificationDate": 1664013858357,
+      "contentHash": "c66602b875adf1a46d3fcced6fd78d95",
+      "sourceName": "contracts/Setup/Factory.sol",
+      "solcConfig": {
+        "version": "0.5.16",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "=0.5.16"
+      ],
+      "artifacts": [
+        "IERC20",
+        "IPancakeCallee",
+        "IPancakeERC20",
+        "IPancakeFactory",
+        "IPancakePair",
+        "Math",
+        "PancakeERC20",
+        "PancakeFactory",
+        "PancakePair",
+        "SafeMath",
+        "UQ112x112"
+      ]
+    },
+    "/home/peterbruegel/GitHub/Jobs/ShibAfrica/contracts/Setup/Router.sol": {
+      "lastModificationDate": 1664013858357,
+      "contentHash": "59fcad8fa7e9758f08473d191017a071",
+      "sourceName": "contracts/Setup/Router.sol",
+      "solcConfig": {
+        "version": "0.6.6",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0",
+        ">=0.6.2",
+        ">=0.6.2",
+        ">=0.5.0",
+        "=0.6.6",
+        ">=0.5.0",
+        ">=0.5.0",
+        ">=0.5.0",
+        ">=0.5.0",
+        "=0.6.6"
+      ],
+      "artifacts": [
+        "IERC20",
+        "IPancakeFactory",
+        "IPancakePair",
+        "IPancakeRouter01",
+        "IPancakeRouter02",
+        "IWETH",
+        "PancakeLibrary",
+        "PancakeRouter",
+        "SafeMath",
+        "TransferHelper"
+      ]
+    },
+    "/home/peterbruegel/GitHub/Jobs/ShibAfrica/contracts/Setup/Token1.sol": {
+      "lastModificationDate": 1664013858357,
+      "contentHash": "5937dfc911473dce19a7d7f86f5c7f4a",
+      "sourceName": "contracts/Setup/Token1.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "Context",
+        "ERC20",
+        "IERC20",
+        "IERC20Metadata",
+        "Token1"
+      ]
+    },
+    "/home/peterbruegel/GitHub/Jobs/ShibAfrica/contracts/Shiba2R.sol": {
+      "lastModificationDate": 1664013858357,
+      "contentHash": "bf20c8a73bd1d9dc87bf380741eec9bb",
+      "sourceName": "contracts/Shiba2R.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.7"
+      ],
+      "artifacts": [
+        "Address",
+        "Auth",
+        "DividendDistributor",
+        "IDividendDistributor",
+        "IERC20",
+        "IPancakeFactory",
+        "IPancakeRouter01",
+        "IPancakeRouter02",
+        "SafeERC20",
+        "SafeMath",
+        "Shiba2R"
+      ]
+    },
+    "/home/peterbruegel/GitHub/Jobs/ShibAfrica/contracts/ShibaAfrica.sol": {
+      "lastModificationDate": 1664023878282,
+      "contentHash": "5b564fa384ce91078c8680cf810abb4f",
+      "sourceName": "contracts/ShibaAfrica.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.8.17",
+        ">=0.6.2"
+      ],
+      "artifacts": [
+        "IPancakeRouter01",
+        "IPancakeRouter02",
+        "ShibAfrica"
+      ]
     }
   }
 }
