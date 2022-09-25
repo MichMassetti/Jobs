@@ -14,7 +14,7 @@ export default function BtnLogMenu(props){
     return(
             <div className="LogMenu font-3xl">
                 <div className="LogTokens inline-block p-3 font-semibold  mr-4 text-red-600 border-b-2 border-solid border-green-700">
-                    Total Funds: {store.getState().user.funds.toFixed(5)}$
+                    Total Funds: {Number(store.getState().user.funds).toFixed(5)}$
                 </div>
                 <div className="LogPrice inline-block p-3 font-semibold  mr-4 text-red-600 border-b-2 border-solid border-green-700">
                     {formatPrice2(scientificToDecimal(store.getState().user.price))}$

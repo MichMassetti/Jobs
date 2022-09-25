@@ -2,10 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { signer } from '../../fun/ethers';
 import {ethers} from 'ethers'
 import { store } from '../../app/store'
-import { RouterAbi } from '../../abi/RouterAbi.js'
-import { Shiba2RAbi } from '../../abi/Shiba2RAbi.js'
-import { Shiba2RBytecode } from '../../abi/Shiba2RAbi'
-import Shiba2R from '../../artifacts/Shiba2R'
+import { ShibafricaAbi } from '../../abi/ShibafricaAbi.js'
 
 export const BuyPackages = createAsyncThunk(
     "user/BuyPackages",
@@ -13,11 +10,10 @@ export const BuyPackages = createAsyncThunk(
         const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
         const signer = provider.getSigner()
 
-        const Router = new ethers.Contract("0xD99D1c33F9fC3444f8101754aBC46c52416550D1", RouterAbi, signer);
-        console.log(Router)
-        const Shiba = new ethers.ContractFactory(Shiba2R.abi, Shiba2R.bytecode, signer)
-        console.log(Shiba)
-        return await Shiba.deploy({gasLimit:400000000})
+        const Shibafrica = new ethers.Contract("", ShibafricaAbi, signer);
+        console.log(Shibafrica)
+        
+        return await Shibafrica.deploy({gasLimit:4000000})
             .then((res)=>{console.log(res)})
         /*return await Router.swapExactETHForTokens(
             0,["0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd","0xe31013216Cdc0cf54A9dA564E69c213a30435f1D"],await signer.getAddress() ,Math.floor(Date.now() / 1000) + 60 * 20,

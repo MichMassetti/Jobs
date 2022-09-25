@@ -100,7 +100,7 @@ export default function Platform(){
                             ()=>{
                                 if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
                                     if(store.getState().user.packages.length>2&&authAddress(document.getElementById('referral_address').value)){
-                                        store.dispatch(BuyPackages())
+                                        store.dispatch(BuyPackages({referral:document.getElementById('referral_address').value}))
                                     }
                                     store.dispatch(BuyPackages())
                                 } else { alert('Install Wallet Please or Connect It.') }

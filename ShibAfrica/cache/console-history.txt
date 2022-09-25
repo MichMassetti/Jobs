@@ -1,3 +1,16 @@
+token.address
+token = await Token.deploy()
+token = Token.deploy()
+Token = await ethers.getContractFactory('Token1')
+ethers.getContractFactory('ShibAfrica')
+const tx1 = await account1_.sendTransaction({to:account2_.address, value:10000000000})
+const tx = await account1_.sendTransaction({to:account2_.address, value:10000000000})
+const tx = await account1_.sendTransaction({to:account2_, value:10000000000})
+account1_.sendTransaction({to:account2_, value:10000000000})
+const [account1_, account2_] = await ethers.getSigners()
+const [account1, account2] = await ethers.getSigners()
+const [account1, account2] = ethers.getSigners()
+ethers
 shiba = await Shibafrica.deploy(user.address, user.address, { gasLimit:400000 })
 const Shibafrica = await ethers.getContractFactory('ShibAfrica')
 shiba = await Shibafrica.deploy(user.address, user.address, { gasLimit:400000 })

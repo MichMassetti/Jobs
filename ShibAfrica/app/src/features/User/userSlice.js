@@ -34,7 +34,7 @@ export const userSlice = createSlice({
     initialState,
     reducers:{ 
         selectPackage:(state, action)=>{
-            if(state.user.packages[state.user.packages.length-1].id==action.payload.id-1){
+            if(state.user.packages[state.user.packages.length-1].id<=action.payload.id-1){
                 state.user.message.package_message='added'
                 state.user.totalPackageCart+=action.payload.price
 
