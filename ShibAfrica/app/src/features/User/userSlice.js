@@ -34,8 +34,9 @@ export const userSlice = createSlice({
     initialState,
     reducers:{ 
         selectPackage:(state, action)=>{
-            if(state.user.packages[state.user.packages.length-1].id<=action.payload.id-1){
+            if(state.user.packages[state.user.packages.length-1].id==action.payload.id-1){
                 state.user.message.package_message='added'
+                state.user.message.vendor_status=''
                 state.user.totalPackageCart+=action.payload.price
 
                 state.user.totalUsdCart+=(state.user.bnbprice*action.payload.price)
@@ -46,6 +47,7 @@ export const userSlice = createSlice({
                 state.user.packages.push(action.payload)
             } else if(state.user.packages[state.user.packages.length-1].id==action.payload.id){
                 state.user.message.package_message='subadded'
+                state.user.message.vendor_status=''
 
                 if(action.payload.id==1) state.user.totalPackageCart=0
                 else{state.user.totalPackageCart-=action.payload.price}
@@ -118,7 +120,21 @@ export const userSlice = createSlice({
             console.log(action.error)
         },
         [BuyPackages.fulfilled]:(state,action)=>{ 
-            state.user.message.vendor_status='buyed';
+            state.user.message.vendor_status=action.payload.status;
+            state.user.totalPackageCart=0
+            state.user.totalUsdCart=0
+            state.user.totalTokenCart=0
+            state.user.totalTokenBurned=0
+            state.packages[1]='disabled'
+            state.packages[2]='disabled'
+            state.packages[3]='disabled'
+            state.packages[4]='disabled'
+            state.packages[5]='disabled'
+            state.packages[6]='disabled'
+            state.packages[7]='disabled'
+            state.packages[8]='disabled'
+            state.packages[9]='disabled'
+            state.packages[10]='disabled'
         },
     }
 })

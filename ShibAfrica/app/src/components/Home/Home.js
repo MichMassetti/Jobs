@@ -7,10 +7,10 @@ export default function Home(){
         <div className='Home relative'>
             <div className="xl:w-2/12 inline-block"></div>
             <div className="w-full xl:w-8/12 text-left inline-block mt-6">
-                <div className="text-4xl md:text-6xl xl:text-8xl font-bold mb-8"><span className="text-red-600">Shib</span>Africa</div>
-                <div className="text-2xl xl:text-4xl ml-8 font-bold mb-4"><span className="text-red-600">The First Crypto</span> Charity Platform</div>
-                <div className="text-2xl xl:text-4xl ml-8 font-bold mb-4"><span className="text-red-600">The ShibAfrica</span> operates in the field of charity in Africa</div>
-                <div className="text-2xl xl:text-4xl ml-8 font-bold mb-10"><span className="text-red-600">We help children to escape from</span>  hunger and poverty</div>
+                <div className="text-4xl md:text-6xl xl:text-8xl font-bold mb-8"><span className="text-green-600">Shib</span>Africa</div>
+                <div className="text-2xl xl:text-4xl ml-8 font-bold mb-4"><span className="text-yellow-400">The First Crypto</span> Charity Platform</div>
+                <div className="text-2xl xl:text-4xl ml-8 font-bold mb-4"><span className="text-green-600">The ShibAfrica</span> operates in the field of charity in Africa</div>
+                <div className="text-2xl xl:text-4xl ml-8 font-bold mb-10"><span className="text-yellow-400">We help children to escape from</span>  hunger and poverty</div>
                 <div className="xl:w-2/12 inline-block"></div>
                 <div className="xl:w-2/12"></div>
                 <div className="xl:w-7/12 mb-16 inline-block">
@@ -52,7 +52,7 @@ export default function Home(){
                     </div>
                 </div>
                 <Platform />
-                <div className="w-full bg-red-400-op-60 rounded-full font-4xl text-white font-bold text-center">
+                <div className="w-full mb-4 bg-red-700-op-60 rounded-full font-4xl text-white font-bold text-center">
                     Be Carefull<br />
                     Don't overdo it<br />
                     <span className="text-2xl">Invest what you are willing to lose with both the token and the platform</span>

@@ -1,26 +1,30 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { signer } from '../../fun/ethers';
-import {ethers} from 'ethers'
+import { ethers } from 'ethers'
 import { store } from '../../app/store'
 import { ShibafricaAbi } from '../../abi/ShibafricaAbi.js'
 
 export const BuyPackages = createAsyncThunk(
     "user/BuyPackages",
-    async (data) => {
+    async (data) => {     
+        let price_amount;   
+        let packages = new Array;
         const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
         const signer = provider.getSigner()
 
-        const Shibafrica = new ethers.Contract("", ShibafricaAbi, signer);
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
         console.log(Shibafrica)
-        
-        return await Shibafrica.deploy({gasLimit:4000000})
-            .then((res)=>{console.log(res)})
-        /*return await Router.swapExactETHForTokens(
-            0,["0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd","0xe31013216Cdc0cf54A9dA564E69c213a30435f1D"],await signer.getAddress() ,Math.floor(Date.now() / 1000) + 60 * 20,
-            {value:ethers.utils.parseUnits("0.05", 'ether'), gasLimit:4000000})
+
+        for(let i=1;i<store.getState.user.packages.length;i++){
+            price_amount+=ethers.utils.parseEther(store.getState().user.packages[i].price)
+            packages.push(store.getState().user.packages[i].id-1)
+        }
+
+        return await Shibafrica.buyPackages(data.referral,packages,{value:price_amount,gasLimit:1200000})
             .then((res)=>{
                 console.log(res)
-            })*/
+                return { status:'buyed' }
+            })
     }
 )
 

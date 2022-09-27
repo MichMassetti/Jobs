@@ -300,6 +300,8 @@ contract ShibAfrica {
     }
     function buyPackages(address payable referral, uint[] memory packages) public payable {
         require(referral!=address(0),'Referral is 0 address.');
+        require(referral!=msg.sender,"Referral can't be you.");
+        
         uint value = msg.value;
         require(packages[0]>=levels[msg.sender],'Invalid Level.');
         for(uint i; i < packages.length; i++){

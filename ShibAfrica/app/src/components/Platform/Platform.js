@@ -30,12 +30,11 @@ export default function Platform(){
         ],
     }
     store.subscribe(()=>{
-        if(store.getState().user.message.package_message=='added'||store.getState().user.message.package_message=='subadded'){
+        if(store.getState().user.message.package_message=='added'||store.getState().user.message.package_message=='subadded'||store.getState().user.message.vendor_status=='buyed'){
             setPackageCart(store.getState().user.totalPackageCart)
             setUsdCart(store.getState().user.totalUsdCart)
             setTokenCart(store.getState().user.totalTokenCart)
             setTokenBurned(store.getState().user.totalTokenBurned)
-
         }
     })
 
@@ -102,7 +101,6 @@ export default function Platform(){
                                     if(store.getState().user.packages.length>2&&authAddress(document.getElementById('referral_address').value)){
                                         store.dispatch(BuyPackages({referral:document.getElementById('referral_address').value}))
                                     }
-                                    store.dispatch(BuyPackages())
                                 } else { alert('Install Wallet Please or Connect It.') }
                             }
                         }
