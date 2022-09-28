@@ -10,11 +10,14 @@ export default function Footer(){
     return(
        <div className='Footer bg-yellow-300 w-full text-center mt-8'>
             <div className="w-4/12 inline-block relative">
-                <div className="absolute right-0 bottom-5 font-bold font-2xl text-red-600">
-                  <img src={maglietta} className="w-44 h-44"></img>
+                <div className="font-bold font-2xl text-red-600">
+                  <img src={maglietta} className="w-44 h-44 m-auto"></img>
+                  <div>
                   Italy: $ 19.90 <br />
                   Europe $ 24.90 <br />
-                  Rest of World: $ 29.90 <br />
+                  Rest of World: $ 29.90 <br /><br />
+                    <span className="font-4xl">Contact Us</span> on Telegram: <a>@Marketingonline202</a>
+                  </div>
 
                 </div>
             </div>
@@ -31,11 +34,14 @@ export default function Footer(){
                 </div>
             </div>
             <div className="w-4/12 inline-block relative">
-                <div className="absolute left-0 bottom-5 font-bold font-2xl text-red-600">
-                    <img src={maglietta} className="w-44 h-44"></img>
+                <div className=" font-bold font-2xl text-red-600">
+                    <img src={maglietta} className="w-44 h-44 m-auto"></img>
+                    <div>
                     Italy: $ 19.90 <br />
                     Europe $ 24.90 <br />
-                    Rest of World: $ 29.90 <br />
+                    Rest of World: $ 29.90 <br /><br />
+                    <span className="font-4xl">Contact Us</span> on Telegram: <a>@Marketingonline202</a>
+                    </div>
                     </div>            
                 </div>
        </div> 

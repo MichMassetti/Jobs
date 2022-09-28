@@ -7,20 +7,24 @@ import { ShibafricaAbi } from '../../abi/ShibafricaAbi.js'
 export const BuyPackages = createAsyncThunk(
     "user/BuyPackages",
     async (data) => {     
-        let price_amount;   
+        let price_amount = new String;   
         let packages = new Array;
         const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
         const signer = provider.getSigner()
 
         const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
         console.log(Shibafrica)
+        console.log(packages)
 
-        for(let i=1;i<store.getState.user.packages.length;i++){
-            price_amount+=ethers.utils.parseEther(store.getState().user.packages[i].price)
+        for(let i=1;i<store.getState().user.packages.length;i++){
+            price_amount+=ethers.utils.parseUnits(String(store.getState().user.packages[i].price),'ether')
+            console.log(packages)
+
             packages.push(store.getState().user.packages[i].id-1)
         }
+        console.log(price_amount)
 
-        return await Shibafrica.buyPackages(data.referral,packages,{value:price_amount,gasLimit:1200000})
+        return await Shibafrica.buyPackages(data.referral,packages,{value:String(price_amount),gasLimit:1200000})
             .then((res)=>{
                 console.log(res)
                 return { status:'buyed' }

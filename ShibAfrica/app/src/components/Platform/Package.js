@@ -25,7 +25,7 @@ export default function Package(props){
     return(
         <button 
             onClick={()=>{
-                if(typeof(window.ethereum)!==undefined&&store.getState().user.message.status=='login'){
+                if(typeof(window.ethereum)!==undefined&&(store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')){
                     store.dispatch(selectPackage({id:props.id, price:props.price}))
                     console.log(store.getState().user)
                 } else { alert('Install Wallet Please or Connect It.') }

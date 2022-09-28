@@ -35,21 +35,29 @@ export default function Home(){
                         <span className="text-green-600"> </span></span>
                     </div>
                 </div>
-                <div className="xl:w-3/12 inline-block mb-4">
-                    <div className="w-full text-center  mt-8">
-                        <div className="text-yellow-300 ml-2 font-bold xl:font-8xl font-6xl">Tokenomics Token</div>
-                        <div className="mb-2 border-2 border-solid border-yellow-300 rounded-md inline-block p-2 px-4 text-yellow-300 ml-5 font-bold xl:font-6xl font-4xl">
-                            <div className="text-green-500 border-b-2 border-solid border-green-500">4% Buy</div>
-                            2% Charity<br />
-                            2% Liquidity
+                <div className="xl:w-5/12 inline-block mb-4">
+                    <div className="w-full text-center bg-gray-500-op-20  mt-8 border-2 border-solid border-white p-1 rounded-md">
+                        <div className=" text-yellow-300 ml-2 font-bold xl:font-8xl font-6xl">Tokenomics Token</div>
+                        <div className="w-full">
+                            <div className="w-5/12 mb-2 border-2 border-solid border-yellow-300 rounded-md inline-block p-2 px-4 text-yellow-300 font-bold xl:font-6xl font-4xl">
+                                <div className="text-green-500 border-b-2 border-solid border-green-500">4% Buy</div>
+                                2% Charity<br />
+                                2% Liquidity
+                            </div>
+                            <div className="w-1/12 inline-block"></div>
+                            <div className="w-6/12 border-2 border-solid border-green-600 rounded-md inline-block p-2 px-4 text-green-500 font-bold xl:font-6xl font-4xl">
+                                <div className="text-yellow-300 border-b-2 border-solid border-yellow-300">12% Sell</div>
+                                4% Charity<br />
+                                4% Marketing<br />
+                                4% Liquidity
+                            </div>
                         </div>
-                        <div className="border-2 border-solid border-green-600 rounded-md inline-block p-2 px-4 text-green-500 ml-5 font-bold xl:font-6xl font-4xl">
-                            <div className="text-yellow-300 border-b-2 border-solid border-yellow-300">12% Sell</div>
-                            4% Charity<br />
-                            4% Marketing<br />
-                            4% Liquidity
-                        </div>
+                        <div className="w-full p-1 text-white font-bold font-4xl border-2 border-solid border-white rounded-md">Total Supply 100 Milions Shibafrica tokens</div>
                     </div>
+                </div>
+                <div className="Explaination w-full text-white font-4xl font-bold text-center bg-green-300-op-60 p-2 rounded-full">
+                    This crowfunding platform is used to increase the volume by purchasing the packages<br />
+                    Logically there will be more donations
                 </div>
                 <Platform />
                 <div className="w-full mb-4 bg-red-700-op-60 rounded-full font-4xl text-white font-bold text-center">

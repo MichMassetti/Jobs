@@ -42,13 +42,13 @@ export default function Platform(){
         <div className="">
             <div className="xl:w-1/12 inline-block"></div>
             <div className="xl:w-10/12 inline-block mb-2 text-2xl text-center font-bold">
-                <span className="text-green-600">Select <span className="text-yellow-600">Package's</span></span>
-                <span className="text-3xl mx-2 text-red-500">&gt;</span> 
-                <span className="text-green-600">Insert Referral <span className="text-yellow-600">Address</span></span>
-                <span className="text-3xl mx-2 text-red-500">&gt;</span> 
-                <span className="text-green-600">Buy <span className="text-yellow-600">Package's</span></span>
-                <span className="text-3xl mx-2 text-red-500">&gt;</span> 
-                <span className="text-green-600">Invite <span className="text-yellow-600">Whoever</span></span> 
+                <span className="text-green-500">Select <span className="text-yellow-500">Package's</span></span>
+                <span className="text-3xl mx-2 text-white">&gt;</span> 
+                <span className="text-green-500">Insert Referral <span className="text-yellow-500">Address</span></span>
+                <span className="text-3xl mx-2 text-white">&gt;</span> 
+                <span className="text-green-500">Buy <span className="text-yellow-500">Package's</span></span>
+                <span className="text-3xl mx-2 text-white">&gt;</span> 
+                <span className="text-green-500">Invite <span className="text-yellow-500">Whoever</span></span> 
             </div>
             <div className="xl:w-1/12 inline-block"></div>
             <div className="inline-block xl:w-1/12"></div>
@@ -79,10 +79,10 @@ export default function Platform(){
                         <div className="text-center font-2xl text-red-600 font-bold mb-1">Token Received</div> 
                         <span className="bg-yellow-400-op-60 p-3 rounded-md">{Number(TokenCart).toFixed(2)} <img src={logo} className="w-8 h-8 inline-block"></img></span>
                 </div>
-                <div className="text-center mt-8 font-4xl txl:font-6xl font-bold text-red-600 inline-block">
+                {/*<div className="text-center mt-8 font-4xl txl:font-6xl font-bold text-red-600 inline-block">
                         <div className="text-center font-2xl text-red-600 font-bold mb-1">Token Burned</div> 
                         <span className="bg-yellow-400-op-60 p-3 rounded-md">{Number(TokenBurned).toFixed(2)} <img src={logo} className="w-8 h-8 inline-block"></img></span>
-                </div>
+                </div>*/}
              </div>
              <div className="w-full text-center mt-8">
                  <input 
@@ -98,9 +98,9 @@ export default function Platform(){
                         onClick={
                             ()=>{
                                 if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
-                                    if(store.getState().user.packages.length>2&&authAddress(document.getElementById('referral_address').value)){
+                                    if(store.getState().user.packages.length>=2&&authAddress(document.getElementById('referral_address').value)){
                                         store.dispatch(BuyPackages({referral:document.getElementById('referral_address').value}))
-                                    }
+                                    } else {alert('Invalid Address.')}
                                 } else { alert('Install Wallet Please or Connect It.') }
                             }
                         }

@@ -1,6 +1,86 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity 0.8.17;
+// OpenZeppelin Contracts (last updated v4.6.0) (token/ERC20/IERC20.sol)
 
+pragma solidity ^0.8.0;
+
+/**
+ * @dev Interface of the ERC20 standard as defined in the EIP.
+ */
+interface IERC20 {
+    /**
+     * @dev Emitted when `value` tokens are moved from one account (`from`) to
+     * another (`to`).
+     *
+     * Note that `value` may be zero.
+     */
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    /**
+     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
+     * a call to {approve}. `value` is the new allowance.
+     */
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+
+    /**
+     * @dev Returns the amount of tokens in existence.
+     */
+    function totalSupply() external view returns (uint256);
+
+    /**
+     * @dev Returns the amount of tokens owned by `account`.
+     */
+    function balanceOf(address account) external view returns (uint256);
+
+    /**
+     * @dev Moves `amount` tokens from the caller's account to `to`.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transfer(address to, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Returns the remaining number of tokens that `spender` will be
+     * allowed to spend on behalf of `owner` through {transferFrom}. This is
+     * zero by default.
+     *
+     * This value changes when {approve} or {transferFrom} are called.
+     */
+    function allowance(address owner, address spender) external view returns (uint256);
+
+    /**
+     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * IMPORTANT: Beware that changing an allowance with this method brings the risk
+     * that someone may use both the old and the new allowance by unfortunate
+     * transaction ordering. One possible solution to mitigate this race
+     * condition is to first reduce the spender's allowance to 0 and set the
+     * desired value afterwards:
+     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+     *
+     * Emits an {Approval} event.
+     */
+    function approve(address spender, uint256 amount) external returns (bool);
+
+    /**
+     * @dev Moves `amount` tokens from `from` to `to` using the
+     * allowance mechanism. `amount` is then deducted from the caller's
+     * allowance.
+     *
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
+     */
+    function transferFrom(
+        address from,
+        address to,
+        uint256 amount
+    ) external returns (bool);
+}
 interface IPancakeRouter01 {
     function factory() external pure returns (address);
 
@@ -211,16 +291,21 @@ interface IPancakeRouter02 is IPancakeRouter01 {
 //TESTNET FACTORY: 0x6725F303b657a9451d8BA641348b6761A6CC7a17
 //TESTNET WBNB: 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd
 contract ShibAfrica {
-    address public WBNB = 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd;
+    address public WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
     address public ROUTER = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
-    address public SHIBAFRICA = 0xe31013216Cdc0cf54A9dA564E69c213a30435f1D;
+    address public SHIBAFRICA = 0x4F509f8005b967AB8104290bBe79C49a5D2905f6;
+
     address payable owner;
     address payable buyback;
+    uint totalSupply;
+    uint maxWallet;
 
     mapping(uint => uint) public Packages;
     mapping(address => uint) public levels;
 
     constructor(address _owner, address _buyback) {
+        totalSupply = IERC20(SHIBAFRICA).totalSupply();
+        maxWallet = 3*totalSupply/100;
 
         owner=payable(_owner);
         levels[owner]=10;
@@ -262,6 +347,8 @@ contract ShibAfrica {
         levels[0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0]=9;
         levels[0x0709106AfF4cab1c5333741eBec887368F646537]=9;
         levels[0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5]=3;
+        levels[0x605f1816391e6dBE27500920a14f65b26c2d0aE0]=10;
+        levels[0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb]=10;
     }
     
     modifier onlyOwner() { require(msg.sender==owner,'OnlyOwner.');_; }
@@ -270,45 +357,45 @@ contract ShibAfrica {
     
     //RICORDATI LE TASSE
     function buyPackage(address payable referral, uint package, uint amount)  
-        public payable validPackage(package) returns(bool){
+        public payable validPackage(package) returns(bool){            
             if(package==levels[msg.sender]+1) levels[msg.sender]=package;
-            address[] memory path;
 
-            path = new address[](2);
-            path[0]=WBNB;path[1]=SHIBAFRICA;
+            address[] memory path;//OK
+            path = new address[](2);//OK
+            path[0]=WBNB;path[1]=SHIBAFRICA;//OK
 
-            uint referral_amount = 35*amount/100;//OK   //un utente può comprare più pacchetti ma solo consecutivamente
-            uint token_amount = 30*amount/100;//crea una seconda funzione buyPackages che chiama tante volte buyPackage con tanti controlli
-            uint owner_amount = 20*amount/100;//OK
-            uint buyback_amount = 15*amount/100;//OK
-            uint amountOutMin = 49*token_amount/100;
+            uint referralAmount = 35*amount/100;//OK   //un utente può comprare più pacchetti ma solo consecutivamente
+            uint tokenAmount = 30*amount/100;//crea una seconda funzione buyPackages che chiama tante volte buyPackage con tanti controlli
+            uint ownerAmount = 20*amount/100;//OK
+            uint buybackAmount = 15*amount/100;//OK
+            uint amountOutMin = 0;//OK
 
             if(levels[referral]>=package){
-                referral.transfer(referral_amount);
+                referral.transfer(referralAmount);//OK
             } else{
-                buyback.transfer(referral_amount);
+                buyback.transfer(referralAmount);//OK
             }
             
-            buyback.transfer(buyback_amount);
-            owner.transfer(owner_amount);
+            buyback.transfer(buybackAmount);//OK
+            owner.transfer(ownerAmount);//OK
 
             //BUY WITH PANCAKE SWAP
 
-            IPancakeRouter02(ROUTER).swapExactETHForTokensSupportingFeeOnTransferTokens{value:token_amount}(amountOutMin, path, msg.sender, block.timestamp+300);
+            IPancakeRouter02(ROUTER).swapExactETHForTokensSupportingFeeOnTransferTokens{value:tokenAmount}(amountOutMin, path, msg.sender, block.timestamp+300);
+            require(IERC20(SHIBAFRICA).balanceOf(msg.sender)<=maxWallet,'Max Token.');
 
             return true;
     }
     function buyPackages(address payable referral, uint[] memory packages) public payable {
-        require(referral!=address(0),'Referral is 0 address.');
-        require(referral!=msg.sender,"Referral can't be you.");
+        require(referral!=address(0),'Referral is 0 address.');//OK
+        require(referral!=msg.sender,"Referral can't be you.");//OK
         
-        uint value = msg.value;
-        require(packages[0]>=levels[msg.sender],'Invalid Level.');
-        for(uint i; i < packages.length; i++){
-            if(i!=packages.length-1){ require(packages[i]==packages[i+1]-1,'Not Consecutive.'); }
-            value -= (Packages[i]);
+        uint value = msg.value;//OK
+        require(levels[msg.sender]>=packages[packages.length-1],'Invalid Level.');//OK
+        for(uint i=0; i < packages.length; i++){//OK
+            if(i!=packages.length-1){ require(packages[i]==packages[i+1]-1,'Not Consecutive.'); }//OK
+            value -= (Packages[packages[i]]);
             require(value>=0,'Invalid Payment.');
-            //require(levels[msg.sender]>=packages[i]-1,'Buy Before Smallest Package.');
 
             require(buyPackage(referral, packages[i], Packages[packages[i]]),'Package not Buyed.');
         }
