@@ -49,8 +49,8 @@ export const logIn = createAsyncThunk(
                         balance=token.balance
                     }
                 })
-                const price = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_TOKEN_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
-                const bnbprice = await Web3Api.token.getTokenPrice({address:"0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", chain:'bsc',exchange:'PancakeSwap2'})
+                const price = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_SHIBAFRICA_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
+                const bnbprice = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_WBNB_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
                 
                 const funds = price.usdPrice*balance;
                 return {id:user.id, balance:balance, funds:funds, price:price.usdPrice, bnbprice:bnbprice.usdPrice, address:user.get('ethAddress'), message:{}}
