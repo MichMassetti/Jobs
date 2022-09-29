@@ -94,19 +94,35 @@ export default function Platform(){
                 />
                 {
                     (typeof(window.ethereum)!==undefined) ?
-                    <button
-                        onClick={
-                            ()=>{
-                                if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
-                                    if(store.getState().user.packages.length>=2&&authAddress(document.getElementById('referral_address').value)){
-                                        store.dispatch(BuyPackages({referral:document.getElementById('referral_address').value}))
-                                    } else {alert('Invalid Address.')}
-                                } else { alert('Install Wallet Please or Connect It.') }
+                    <div className="inline-block">
+                        <button
+                            onClick={
+                                ()=>{
+                                    if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
+                                        if(store.getState().user.packages.length>=2&&authAddress(document.getElementById('referral_address').value)){
+                                            store.dispatch(BuyPackages({referral:document.getElementById('referral_address').value}))
+                                        } else {alert('Invalid Address or Select Packages.')}
+                                    } else { alert('Install Wallet Please or Connect It.') }
+                                }
                             }
-                        }
-                        className="p-4 font-4xl text-white font-bold bg-green-600 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"
-                        >Buy Package's
-                    </button>:
+                            className="p-4 mr-2 font-4xl text-white font-bold bg-green-600 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"
+                            >Buy Package's
+                        </button>
+                        <button
+                            onClick={
+                                ()=>{
+                                    if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
+                                        if(store.getState().user.packages.length>=2){
+                                            store.dispatch(BuyPackages({referral:process.env.REACT_APP_WALLET_ADDRESS}))
+                                        } else {alert('Select Packages')}
+                                    } else { alert('Install Wallet Please or Connect It.') }
+                                }
+                            }
+                            className="p-4 font-4xl text-white font-bold bg-red-300 hover:bg-red-400 rounded-md border-4 border-solid border-red-400"
+                            >I don't have a Referral
+                        </button>
+                    </div>
+                    :
                     <button
                     className="p-4 font-4xl text-black font-bold bg-gray-200 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"
                     >Install Wallet

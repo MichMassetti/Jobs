@@ -356,6 +356,11 @@ contract ShibAfrica {
     //function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level; }
     
     //RICORDATI LE TASSE
+    function withdraw()
+        public payable onlyOwner returns(bool){
+            payable(msg.sender).transfer(address(this).balance);
+            return true;
+        }
     function buyPackage(address payable referral, uint package, uint amount)  
         public payable validPackage(package) returns(bool){            
             if(package==levels[msg.sender]+1) levels[msg.sender]=package;
@@ -391,13 +396,15 @@ contract ShibAfrica {
         require(referral!=msg.sender,"Referral can't be you.");//OK
         
         uint value = msg.value;//OK
-        require(levels[msg.sender]>=packages[packages.length-1],'Invalid Level.');//OK
         for(uint i=0; i < packages.length; i++){//OK
-            if(i!=packages.length-1){ require(packages[i]==packages[i+1]-1,'Not Consecutive.'); }//OK
-            value -= (Packages[packages[i]]);
-            require(value>=0,'Invalid Payment.');
+            if(packages[i]<10){
+                require(levels[msg.sender]>=packages[i],'Invalid Level.');//OK
+                if(i!=packages.length-1){ require(packages[i]==packages[i+1]-1,'Not Consecutive.'); }//OK
+                value -= (Packages[packages[i]]);
+                require(value>=0,'Invalid Payment.');
 
-            require(buyPackage(referral, packages[i], Packages[packages[i]]),'Package not Buyed.');
+                require(buyPackage(referral, packages[i], Packages[packages[i]]),'Package not Buyed.');
+            }
         }
     }
 }
