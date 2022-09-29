@@ -21,7 +21,7 @@ export const BuyPackages = createAsyncThunk(
             packages.push(store.getState().user.packages[i].id-1)
         }
         for(let i=packages.length;i<10;i++){
-            packages.push(10);
+            packages.unshift(10);
         }
         console.log(String(price_amount))
         console.log(packages)
@@ -49,7 +49,7 @@ export const logIn = createAsyncThunk(
                         balance=token.balance
                     }
                 })
-                const price = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_SHIBAFRICA_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
+                const price = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_SHIBAFRICA_TOKEN_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
                 const bnbprice = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_WBNB_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
                 
                 const funds = price.usdPrice*balance;

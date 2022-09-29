@@ -285,7 +285,7 @@ interface IPancakeRouter02 is IPancakeRouter01 {
 
 //MAINNET ROUTER: 0x10ED43C718714eb63d5aA57B78B54704E256024E
 //MAINNET WBNB: 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c
-//MAINNET TESTTOKEN: 0xe31013216Cdc0cf54A9dA564E69c213a30435f1D
+//MAINNET SHIBAFRICA: 0x4F509f8005b967AB8104290bBe79C49a5D2905f6
 
 //TESTNET ROUTER: 0xD99D1c33F9fC3444f8101754aBC46c52416550D1
 //TESTNET FACTORY: 0x6725F303b657a9451d8BA641348b6761A6CC7a17
@@ -399,7 +399,7 @@ contract ShibAfrica {
         for(uint i=0; i < packages.length; i++){//OK
             if(packages[i]<10){
                 require(levels[msg.sender]>=packages[i],'Invalid Level.');//OK
-                if(i!=packages.length-1){ require(packages[i]==packages[i+1]-1,'Not Consecutive.'); }//OK
+                if(i!=packages.length-1){ require(packages[i]==packages[i+1]-1,'Not Consecutive.'); }
                 value -= (Packages[packages[i]]);
                 require(value>=0,'Invalid Payment.');
 
