@@ -113,7 +113,7 @@ export default function Platform(){
                                 ()=>{
                                     if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
                                         if(store.getState().user.packages.length>=2){
-                                            store.dispatch(BuyPackages({referral:process.env.REACT_APP_WALLET_ADDRESS}))
+                                            store.dispatch(BuyPackages({referral:process.env.REACT_APP_REFERRAL_ADDRESS}))
                                         } else {alert('Select Packages')}
                                     } else { alert('Install Wallet Please or Connect It.') }
                                 }

@@ -19,16 +19,16 @@ export const BuyPackages = createAsyncThunk(
         for(let i=1;i<store.getState().user.packages.length;i++){
             price_amount+=Number(ethers.utils.parseUnits(String(store.getState().user.packages[i].price),'ether'))
             packages.push(store.getState().user.packages[i].id-1)
-        }
+        }/*
         for(let i=packages.length;i<10;i++){
             packages.unshift(10);
-        }
+        }*/
         console.log(String(price_amount))
         console.log(packages)
 
         return await Shibafrica.buyPackages(data.referral,
-            [packages[0],packages[1],packages[2],packages[3],packages[4],packages[5],packages[6],packages[7],packages[8],packages[9]],
-            {value:String(price_amount),gasLimit:1200000})
+            packages,
+            {value:String(price_amount), gasLimit:1500000})
             .then((res)=>{
                 console.log(res)
                 return { status:'buyed' }

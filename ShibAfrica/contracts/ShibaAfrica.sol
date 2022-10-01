@@ -282,14 +282,13 @@ interface IPancakeRouter02 is IPancakeRouter01 {
     ) external;
 }
 
-
-//MAINNET ROUTER: 0x10ED43C718714eb63d5aA57B78B54704E256024E
 //MAINNET WBNB: 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c
+//MAINNET ROUTER: 0x10ED43C718714eb63d5aA57B78B54704E256024E
 //MAINNET SHIBAFRICA: 0x4F509f8005b967AB8104290bBe79C49a5D2905f6
 
+//TESTNET WBNB: 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd
 //TESTNET ROUTER: 0xD99D1c33F9fC3444f8101754aBC46c52416550D1
 //TESTNET FACTORY: 0x6725F303b657a9451d8BA641348b6761A6CC7a17
-//TESTNET WBNB: 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd
 contract ShibAfrica {
     address public WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
     address public ROUTER = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
@@ -304,8 +303,8 @@ contract ShibAfrica {
     mapping(address => uint) public levels;
 
     constructor(address _owner, address _buyback) {
-        totalSupply = IERC20(SHIBAFRICA).totalSupply();
-        maxWallet = 3*totalSupply/100;
+        //totalSupply = IERC20(SHIBAFRICA).totalSupply();
+        //maxWallet = 3*totalSupply/100;
 
         owner=payable(_owner);
         levels[owner]=10;
@@ -352,8 +351,8 @@ contract ShibAfrica {
     }
     
     modifier onlyOwner() { require(msg.sender==owner,'OnlyOwner.');_; }
-    modifier validPackage(uint package) { require(package>=1&&package<=9,'Invalid Package.');_; }
-    //function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level; }
+    modifier validPackage(uint package) { require(package>=0&&package<=9,'Invalid Package.');_; }
+    function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level; }
     
     //RICORDATI LE TASSE
     function withdraw()
@@ -370,7 +369,7 @@ contract ShibAfrica {
             path[0]=WBNB;path[1]=SHIBAFRICA;//OK
 
             uint referralAmount = 35*amount/100;//OK   //un utente può comprare più pacchetti ma solo consecutivamente
-            uint tokenAmount = 30*amount/100;//crea una seconda funzione buyPackages che chiama tante volte buyPackage con tanti controlli
+            uint tokenAmount = 30*amount/100;//OK
             uint ownerAmount = 20*amount/100;//OK
             uint buybackAmount = 15*amount/100;//OK
             uint amountOutMin = 0;//OK
@@ -387,7 +386,7 @@ contract ShibAfrica {
             //BUY WITH PANCAKE SWAP
 
             IPancakeRouter02(ROUTER).swapExactETHForTokensSupportingFeeOnTransferTokens{value:tokenAmount}(amountOutMin, path, msg.sender, block.timestamp+300);
-            require(IERC20(SHIBAFRICA).balanceOf(msg.sender)<=maxWallet,'Max Token.');
+            //require(IERC20(SHIBAFRICA).balanceOf(msg.sender)<=maxWallet,'Max Token.');
 
             return true;
     }

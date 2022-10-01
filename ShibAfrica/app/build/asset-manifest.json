@@ -1,11 +1,11 @@
 {
   "main.css": "/static/css/main.0a66c4d3.chunk.css",
-  "main.js": "/static/js/main.44aade74.chunk.js",
-  "main.js.map": "/static/js/main.44aade74.chunk.js.map",
+  "main.js": "/static/js/main.f3cb5143.chunk.js",
+  "main.js.map": "/static/js/main.f3cb5143.chunk.js.map",
   "static/js/1.14405023.chunk.js": "/static/js/1.14405023.chunk.js",
   "static/js/1.14405023.chunk.js.map": "/static/js/1.14405023.chunk.js.map",
-  "static/js/2.ef1a8ccf.chunk.js": "/static/js/2.ef1a8ccf.chunk.js",
-  "static/js/2.ef1a8ccf.chunk.js.map": "/static/js/2.ef1a8ccf.chunk.js.map",
+  "static/js/2.23d6e355.chunk.js": "/static/js/2.23d6e355.chunk.js",
+  "static/js/2.23d6e355.chunk.js.map": "/static/js/2.23d6e355.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.a403a006.js",
   "runtime~main.js.map": "/static/js/runtime~main.a403a006.js.map",
   "static/media/logo.png": "/static/media/logo.ec833176.png",
@@ -16,6 +16,6 @@
   "static/media/tailwind.output.css": "/static/media/wallpaper.00832d38.jpeg",
   "static/css/main.0a66c4d3.chunk.css.map": "/static/css/main.0a66c4d3.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.e66ca5d0217928bf2afabdecceb8ac27.js": "/precache-manifest.e66ca5d0217928bf2afabdecceb8ac27.js",
+  "precache-manifest.e7db1a28e835c95b2194f2f775b8f2a1.js": "/precache-manifest.e7db1a28e835c95b2194f2f775b8f2a1.js",
   "service-worker.js": "/service-worker.js"
 }
