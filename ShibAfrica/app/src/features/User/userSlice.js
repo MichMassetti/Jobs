@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { store } from '../../app/store';
-import { logIn, logOut, BuyPackages } from './userAPI'
+import { logIn, logOut, BuyPackages, setUserArea } from './userAPI'
 const initialState = {
     user:{ 
         address:'',
         token_balance:0,
         funds:'',
+        level:0,
         price:'',
         bnbprice:'',
         packages:[{id:0,price:0}],
@@ -13,7 +14,7 @@ const initialState = {
         totalUsdCart:0,
         totalTokenCart:0,
         totalTokenBurned:0,
-        message:{status:'logout', error:'', vendor_status:'',package_message:'',buy_status:''   }
+        message:{status:'logout', error:'', vendor_status:'',package_message:'',buy_status:'',user_area:false   }
     },
     packages:{
         1:'disabled',
@@ -135,6 +136,16 @@ export const userSlice = createSlice({
             state.packages[8]='disabled'
             state.packages[9]='disabled'
             state.packages[10]='disabled'
+        },
+        [setUserArea.pending]:state=>{ 
+        },
+        [setUserArea.rejected]:(state, action)=>{ 
+            state.user.message.user_area='rejected'
+            console.log(action.error)
+        },
+        [setUserArea.fulfilled]:(state,action)=>{ 
+            state.user.message.user_area=action.payload.user_area;
+            state.user.level=action.payload.level;
         },
     }
 })

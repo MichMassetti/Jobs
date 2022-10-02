@@ -58,6 +58,9 @@ export default function Home(){
                 <div className="Explaination w-full text-white font-4xl font-bold text-center bg-green-300-op-60 p-2 rounded-full">
                     This crowfunding platform is used to increase the volume by purchasing the packages<br />
                     Logically there will be more donations
+
+                    <br></br><span className="text-red-800">PLATFORM UNDER MANTAINANCE<br></br></span>
+
                 </div>
                 <Platform />
                 <div className="w-full mb-4 bg-red-700-op-60 rounded-full font-4xl text-white font-bold text-center">

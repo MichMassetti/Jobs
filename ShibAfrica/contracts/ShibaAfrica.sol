@@ -2,8 +2,6 @@
 pragma solidity 0.8.17;
 // OpenZeppelin Contracts (last updated v4.6.0) (token/ERC20/IERC20.sol)
 
-pragma solidity ^0.8.0;
-
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
  */
@@ -290,17 +288,23 @@ interface IPancakeRouter02 is IPancakeRouter01 {
 //TESTNET ROUTER: 0xD99D1c33F9fC3444f8101754aBC46c52416550D1
 //TESTNET FACTORY: 0x6725F303b657a9451d8BA641348b6761A6CC7a17
 contract ShibAfrica {
+    uint totalSupply;
+    uint maxWallet;
     address public WBNB = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
     address public ROUTER = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
     address public SHIBAFRICA = 0x4F509f8005b967AB8104290bBe79C49a5D2905f6;
 
-    address payable owner;
-    address payable buyback;
-    uint totalSupply;
-    uint maxWallet;
+    address payable public owner;
+    address payable public buyback;
 
     mapping(uint => uint) public Packages;
     mapping(address => uint) public levels;
+    mapping(address => address[]) public referralsAddress;
+    mapping(address => mapping(address => uint)) referralsReferralAmount;
+    mapping(address => mapping(address => uint)) referralsTokenAmount;
+    mapping(address => mapping(address => uint)) referralsLevels;
+
+    event Buyed( uint[] packages, address referral );
 
     constructor(address _owner, address _buyback) {
         //totalSupply = IERC20(SHIBAFRICA).totalSupply();
@@ -350,9 +354,9 @@ contract ShibAfrica {
         levels[0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb]=10;
     }
     
-    modifier onlyOwner() { require(msg.sender==owner,'OnlyOwner.');_; }
-    modifier validPackage(uint package) { require(package>=0&&package<=9,'Invalid Package.');_; }
-    function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level; }
+    modifier onlyOwner() { require(msg.sender==owner,'OnlyOwner.');_; }//OK
+    modifier validPackage(uint package) { require(package>=0&&package<=9,'Invalid Package.');_; }//OK
+    function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level; }//OK
     
     //RICORDATI LE TASSE
     function withdraw()
@@ -385,15 +389,17 @@ contract ShibAfrica {
 
             //BUY WITH PANCAKE SWAP
 
-            IPancakeRouter02(ROUTER).swapExactETHForTokensSupportingFeeOnTransferTokens{value:tokenAmount}(amountOutMin, path, msg.sender, block.timestamp+300);
+            IPancakeRouter02(ROUTER).swapExactETHForTokensSupportingFeeOnTransferTokens{value:tokenAmount}(amountOutMin, path, msg.sender, block.timestamp+300);//OK
             //require(IERC20(SHIBAFRICA).balanceOf(msg.sender)<=maxWallet,'Max Token.');
-
+            
+            referralsReferralAmount[referral][msg.sender] += referralAmount;
+            referralsTokenAmount[referral][msg.sender] += tokenAmount;
             return true;
     }
     function buyPackages(address payable referral, uint[] memory packages) public payable {
         require(referral!=address(0),'Referral is 0 address.');//OK
         require(referral!=msg.sender,"Referral can't be you.");//OK
-        
+
         uint value = msg.value;//OK
         for(uint i=0; i < packages.length; i++){//OK
             if(packages[i]<10){
@@ -401,8 +407,11 @@ contract ShibAfrica {
                 if(i!=packages.length-1){ require(packages[i]==packages[i+1]-1,'Not Consecutive.'); }
                 value -= (Packages[packages[i]]);
                 require(value>=0,'Invalid Payment.');
-
                 require(buyPackage(referral, packages[i], Packages[packages[i]]),'Package not Buyed.');
+            
+                referralsAddress[referral].push(msg.sender);
+                referralsLevels[referral][msg.sender]=packages[packages.length-1];
+                emit Buyed(packages, referral);
             }
         }
     }

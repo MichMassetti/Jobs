@@ -12,13 +12,13 @@ export const rootReducer = combineReducers({
     user:userReducer,
 });
 const migrations = {
-    2: (state) => {
+    3: (state) => {
         return{
             ...state,
             device:undefined,
         }
     },
-    3: (state) => {
+    4: (state) => {
         return {
             device:state.device
         }
@@ -27,7 +27,7 @@ const migrations = {
 const persistConfig = {
     key:'root',
     storage,
-    version:3,
+    version:4,
     stateReconciler: autoMergeLevel2,
     migrate: createMigrate(migrations, { debug:true })
 }

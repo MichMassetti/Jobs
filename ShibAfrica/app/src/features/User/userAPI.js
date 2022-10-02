@@ -4,6 +4,17 @@ import { ethers } from 'ethers'
 import { store } from '../../app/store'
 import { ShibafricaAbi } from '../../abi/ShibafricaAbi.js'
 
+export const setUserArea = createAsyncThunk(
+    'user/setUserArea',
+    async(data) =>{
+        const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
+        const signer = provider.getSigner();
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
+
+        return await Shibafrica.levels(store.getState().user.address)
+            .then((level)=>{console.log(level);return {user_area:data.user_area, level:level}});
+    }
+)
 export const BuyPackages = createAsyncThunk(
     "user/BuyPackages",
     async (data) => {     
