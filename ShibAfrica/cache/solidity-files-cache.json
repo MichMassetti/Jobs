@@ -184,8 +184,8 @@
       ]
     },
     "/home/peterbruegel/GitHub/Jobs/ShibAfrica/contracts/ShibaAfrica.sol": {
-      "lastModificationDate": 1664647731135,
-      "contentHash": "a4114cb01ea7d201a148a49a4a1a05bf",
+      "lastModificationDate": 1665050765762,
+      "contentHash": "da994ee6781260c1b03c004b09097703",
       "sourceName": "contracts/ShibaAfrica.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -213,7 +213,6 @@
       "imports": [],
       "versionPragmas": [
         "0.8.17",
-        "^0.8.0",
         ">=0.6.2"
       ],
       "artifacts": [

@@ -11,6 +11,9 @@ export default function Home(){
                 <div className="text-2xl xl:text-4xl ml-8 font-bold mb-4"><span className="text-yellow-400">The First Crypto</span> Charity Platform</div>
                 <div className="text-2xl xl:text-4xl ml-8 font-bold mb-4"><span className="text-green-600">The ShibAfrica</span> operates in the field of charity in Africa</div>
                 <div className="text-2xl xl:text-4xl ml-8 font-bold mb-10"><span className="text-yellow-400">We help children to escape from</span>  hunger and poverty</div>
+                <div className="text-white text-2xl underline-offset-2 ml-8 xl:text-4xl font-bold mt-2">
+                    <a target="_blank" href="https://youtu.be/DLfXF33iERI">Click Me and Watch Us on Youtube!</a>
+                </div>
                 <div className="xl:w-2/12 inline-block"></div>
                 <div className="xl:w-2/12"></div>
                 <div className="xl:w-7/12 mb-16 inline-block">
@@ -58,9 +61,6 @@ export default function Home(){
                 <div className="Explaination w-full text-white font-4xl font-bold text-center bg-green-300-op-60 p-2 rounded-full">
                     This crowfunding platform is used to increase the volume by purchasing the packages<br />
                     Logically there will be more donations
-
-                    <br></br><span className="text-red-800">PLATFORM UNDER MANTAINANCE<br></br></span>
-
                 </div>
                 <Platform />
                 <div className="w-full mb-4 bg-red-700-op-60 rounded-full font-4xl text-white font-bold text-center">

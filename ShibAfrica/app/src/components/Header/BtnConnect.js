@@ -18,6 +18,7 @@ export default function BtnConnect() {
 
     return (
         <div className="mr-2 relative bottom-12 xl:bottom-7 font-bold font-4xl">
+            <div className="text-red-700 text-2xl font-bold inline-block mr-3">Only BSC!!!</div>
             {
                 (Auth=='logout'&&Auth!='error') ?//Cambiare
                     <BtnLogin />:

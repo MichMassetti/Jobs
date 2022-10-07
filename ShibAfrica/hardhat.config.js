@@ -38,12 +38,10 @@ module.exports = {
       gas: 6000000,
       accounts: {mnemonic: 'real foil witness kite jar chapter weapon mule hard sure win squeeze'}
     },
-    ropsten: {
-      url: "https://ropsten.infura.io/v3/c3f3cef534b54b08ad0124fec674106f",
-      chainId: 3,
-      gasPrice: 20000000000,
-      gas: 6000000,
-      accounts: {mnemonic: 'real foil witness kite jar chapter weapon mule hard sure win squeeze'}
+    goerli: {
+      url: "https://goerli.infura.io/v3/c3f3cef534b54b08ad0124fec674106f",
+      chainId: 5,
+      accounts: { mnemonic: 'real foil witness kite jar chapter weapon mule hard sure win squeeze' }
     }
   },
   solidity:{

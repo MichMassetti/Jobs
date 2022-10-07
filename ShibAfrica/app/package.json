@@ -1,6 +1,6 @@
 {
   "name": "shibafrica.io",
-  "author":"Babilonia is coming...",
+  "author": "Babilonia is coming...",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,6 +27,7 @@
     "react-svg": "^15.1.7",
     "redux-persist": "^6.0.0",
     "tx-revert-reason": "^0.2.2",
+    "url": "^0.11.0",
     "web-vitals": "^2.1.4",
     "web3": "^1.7.4"
   },

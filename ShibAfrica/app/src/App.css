@@ -7,5 +7,6 @@
 .font-3xl{ font-size: 1rem; }
 .bg-gray-500-op-20{background-color:rgba(155,155,155,0.5)}
 .bg-yellow-400-op-60{background-color:rgba(253, 240, 0, 0.6)}
-.bg-red-700-op-60{background-color:rgba(245, 6, 6, 0.603)}
+.bg-red-700-op-60{background-color:rgba(231, 107, 107, 0.603)}
+.bg-red-400-op-660{background-color:rgba(231, 131, 131, 0.603)}
 .bg-green-300-op-60{background-color:rgba(6,200,6,0.6)}

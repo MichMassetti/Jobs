@@ -12,6 +12,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.7.3",
     "@pancakeswap-libs/pancake-swap-core": "^0.1.0",
-    "@truffle/hdwallet-provider": "^2.0.14"
+    "@truffle/hdwallet-provider": "^2.0.14",
+    "react-blockies": "^1.4.1"
   }
 }
