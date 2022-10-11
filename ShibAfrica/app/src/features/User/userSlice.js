@@ -168,6 +168,7 @@ export const userSlice = createSlice({
             state.packages[8]='disabled'
             state.packages[9]='disabled'
             state.packages[10]='disabled'
+            state.user.packages=[{id:0,price:0,burned:0}]
         },
         [setUserArea.pending]:state=>{ 
             state.user.message.user_area='pending'

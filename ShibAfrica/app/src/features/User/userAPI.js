@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { signer } from '../../fun/ethers';
 import { ethers } from 'ethers'
 import { store } from '../../app/store'
-import ShibafricaAbiOLD  from '../../abi/ShibAfricaOLD.json'
 import ShibafricaAbiACTUAL  from '../../abi/ShibAfricaACTUAL.json'
 const Packages = [
     {id:1,price:0.05},
@@ -103,12 +102,13 @@ export const BuyPackages = createAsyncThunk(
             let pack = await Shibafrica.packagesTokenAmount(data.referral, level);
             level = Number(level.toString());
             pack = Number(pack.toString());
-            
     
             if(pack>0) level=level;
             else if(pack==0&&level==0) level=-1;
             console.log(level)
             let package_ = packages[0];
+            console.log(packages)
+            console.log(Shibafrica)
             if(level>-1){
                 return await Shibafrica.buyPackages(data.referral,
                     package_,

@@ -93,7 +93,7 @@ export default function Packages(props){
                     <span className="bg-yellow-400-op-60 p-3 rounded-md">{Number(TokenCart).toFixed(2)} <img src={logo} className="w-8 h-8 inline-block"></img></span>
             </div>
             <div className={"mt-4 text-red-700 text-xl font-bold "+Error}>Your Referral don't buy any package :(</div>
-            <div className={"mt-4 text-white-700 text-xl font-bold "}>Insert Referral only for the first packages</div>
+            <div className={"mt-4 text-white-700 text-xl font-bold "}>Insert Referral only for the first package</div>
 
             <div className="w-full text-center mt-8">
                  <input 
