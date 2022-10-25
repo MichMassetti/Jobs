@@ -39,7 +39,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:css": "postcss src/tailwind.css -o src/tailwind.output.css"
+    "watch:css": "postcss src/tailwind.css -o src/tailwind.output.css",
+    "golive":"npm run build && firebase deploy"
   },
   "eslintConfig": {
     "extends": [

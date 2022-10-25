@@ -70,12 +70,8 @@ export const BuyPackages = createAsyncThunk(
         const signer = provider.getSigner()
 
         const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.abi, signer);
-        let mylevel;
-        mylevel = await Shibafrica.levels(store.getState().user.address)
-        let mypack = await Shibafrica.packagesTokenAmount(store.getState().user.address, mylevel);
-        mylevel = Number(mylevel.toString());
-        mypack = Number(mypack.toString());
-        if(mypack>0) {
+        const mylevel = Number(await Shibafrica.levels(store.getState().user.address))
+        if(mylevel>0) {
             data.referral=store.getState().user.address;
             for(let i=1;i<store.getState().user.packages.length;i++){
                 price_amount+=Number(ethers.utils.parseUnits(String(store.getState().user.packages[i].price),'ether'))
@@ -91,25 +87,16 @@ export const BuyPackages = createAsyncThunk(
                 })
 
         }
-        else if(mypack==0&&mylevel==0&&data.referral!='') {
-            mylevel=-1;
+        else if(mylevel==0&&data.referral!='') {
             for(let i=1;i<store.getState().user.packages.length;i++){
                 price_amount+=Number(ethers.utils.parseUnits(String(store.getState().user.packages[i].price),'ether'))
                 packages.push(store.getState().user.packages[i].id-1)
             }
-            let level;
-            level = await Shibafrica.levels(data.referral)
-            let pack = await Shibafrica.packagesTokenAmount(data.referral, level);
-            level = Number(level.toString());
-            pack = Number(pack.toString());
-    
-            if(pack>0) level=level;
-            else if(pack==0&&level==0) level=-1;
-            console.log(level)
+            const refLevel = Number(await Shibafrica.levels(data.referral))
+            console.log(refLevel)
             let package_ = packages[0];
             console.log(packages)
-            console.log(Shibafrica)
-            if(level>-1){
+            if(refLevel>0){
                 return await Shibafrica.buyPackages(data.referral,
                     package_,
                     {value:String(price_amount), gasLimit:1500000})
@@ -144,17 +131,10 @@ export const logIn = createAsyncThunk(
                 })
                 const price = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_SHIBAFRICA_TOKEN_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
                 const bnbprice = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_WBNB_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
-                let level;
-                level = await Shibafrica.levels(user.get('ethAddress'))
-                let pack = await Shibafrica.packagesTokenAmount(user.get('ethAddress'), level);
-                level = Number(level.toString());
-                pack = Number(pack.toString());
-
-                if(pack>0) level=level;
-                else if(pack==0&&level==0) level=-1;
+                const level = await Shibafrica.levels(user.get('ethAddress'));
                 
                 const funds = price.usdPrice*balance;
-                return {id:user.id, balance:balance, funds:funds, price:price.usdPrice, bnbprice:bnbprice.usdPrice, address:user.get('ethAddress'),level:Number(level.toString())+1, message:{}}
+                return {id:user.id, balance:balance, funds:funds, price:price.usdPrice, bnbprice:bnbprice.usdPrice, address:user.get('ethAddress'),level:level.toString(), message:{}}
             });
     }
 )

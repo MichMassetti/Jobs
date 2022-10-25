@@ -297,16 +297,29 @@ contract ShibAfrica {
     address payable public owner;
     address payable public buyback;
 
+    address[] public Partecipants1;
+    address[] public Partecipants2;
+    address[] public Partecipants3;
+    address[] public Partecipants4;
+    address[] public Partecipants5;
+    address[] public Partecipants6;
+    address[] public Partecipants7;
+    address[] public Partecipants8;
+    address[] public Partecipants9;
+    address[] public Partecipants10;
+
+
     mapping(uint => uint) public Packages;
+    mapping(uint => uint) public Partecipants;
+
     mapping(address => uint) public levels;
     mapping(address => uint) public refCounter;
     mapping(address => uint) public totalTokenAmount;
+    mapping(address => address) public myReferral;
     mapping(address => mapping(uint => uint)) public packagesTokenAmount;
     mapping(address => mapping(uint => uint)) public referralsReferralAmount;
     mapping(address => mapping(uint => uint)) public referralsLevels;
     mapping(address => mapping(uint => address)) public referralsAddress;
-    mapping(address => address) public myReferral;
-    mapping(address => bool) public subscribed;
 
     event Buyed( uint packages, address referral );
 
@@ -317,50 +330,100 @@ contract ShibAfrica {
         levels[owner]=10;
         buyback=payable(_buyback);
 
-        Packages[0] = 50000000000000000;
-        Packages[1] = 100000000000000000;
-        Packages[2] = 250000000000000000;
-        Packages[3] = 500000000000000000;
-        Packages[4] = 1000000000000000000;
-        Packages[5] = 2000000000000000000;
-        Packages[6] = 5000000000000000000;
-        Packages[7] = 10000000000000000000;
-        Packages[8] = 20000000000000000000;
-        Packages[9] = 40000000000000000000;
+        Packages[1] = 50000000000000000;
+        Packages[2] = 100000000000000000;
+        Packages[3] = 250000000000000000;
+        Packages[4] = 500000000000000000;
+        Packages[5] = 1000000000000000000;
+        Packages[6] = 2000000000000000000;
+        Packages[7] = 5000000000000000000;
+        Packages[8] = 10000000000000000000;
+        Packages[9] = 20000000000000000000;
+        Packages[10] = 40000000000000000000;
 
-        levels[0x40568E2C3632C2C54ce7A76fE4A132c2D2785D2B]=9;
-        levels[0xc18DccFB00bdd894DeB06Cce23586bb57978239b]=9;
-        levels[0x74D2FFE54401F30538cfEBC524f64846F8BB037C]=9;
-        levels[0x9A67cAc5FD39F9419aEc4dd0B6ACA690126B0f01]=9;
-        levels[0xb8A676Fc48DA2Ea87cfB9d87A4310a14091dd101]=9;
-        levels[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]=9;
-        levels[0x0915E78b173B1c5920eaB355E5A4B95faBA44F7E]=3;
-        levels[0x7D708F78Bb312BADBB6a2D9b10e643b6a2276C6e]=9;
-        levels[0x255669BE628EF19fDA45cDE6fF04Ba9FF237bAEe]=4;
+        levels[0x40568E2C3632C2C54ce7A76fE4A132c2D2785D2B]=10;
+        levels[0xc18DccFB00bdd894DeB06Cce23586bb57978239b]=10;
+        levels[0x74D2FFE54401F30538cfEBC524f64846F8BB037C]=10;
+        levels[0x9A67cAc5FD39F9419aEc4dd0B6ACA690126B0f01]=10;
+        levels[0xb8A676Fc48DA2Ea87cfB9d87A4310a14091dd101]=10;
+        levels[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]=10;
+        levels[0x0915E78b173B1c5920eaB355E5A4B95faBA44F7E]=4;
+        levels[0x7D708F78Bb312BADBB6a2D9b10e643b6a2276C6e]=10;
+        levels[0x255669BE628EF19fDA45cDE6fF04Ba9FF237bAEe]=5;
         levels[0x15f896D6E8F1259e5df709737b92B3B257623634]=1;
-        levels[0xF21D3d687AE470C8040ed2CCC812aD8865378Eb8]=3;
-        levels[0x40E85181e20A9eEC5B150B5999EDBf81D3705023]=9;
-        levels[0x3D4409a7Bad31F1d61be92B3E5c1C3be6BaF98fC]=9;
-        levels[0x00BE4D72bD5Aa20c2023c0EEF2e9949F338b1F9b]=9;
-        levels[0x1457A4a6293FF6889C64569990293bE9EDD5E72e]=9;
-        levels[0xddD8E3c2bB73752F76e01f0663dF68F783bBE7C6]=9;
-        levels[0x3e21e2Dc7d76b6CAb36c9F860423398311E9B19d]=9;
-        levels[0xd805c66a13165CB31b6e6Eb01F19b5b64bF76F88]=9;
-        levels[0x26E24bfBF08e3e6DEd77dADe76eCd95c150A626d]=9;
-        levels[0x4c63067EF1faaBe2d5D335A06719f7a841f2FeAb]=3;
-        levels[0x355b9cbfaedF2588342d798B919c2f9954BcFB9f]=9;
-        levels[0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0]=9;
-        levels[0x0709106AfF4cab1c5333741eBec887368F646537]=9;
-        levels[0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5]=3;
-        levels[0x605f1816391e6dBE27500920a14f65b26c2d0aE0]=9;
-        levels[0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb]=0;
-        levels[0x4e4Cd5a564ceF73252560B0253F6877778969d4B]=9;//idonthavereferal
+        levels[0xF21D3d687AE470C8040ed2CCC812aD8865378Eb8]=4;
+        levels[0x40E85181e20A9eEC5B150B5999EDBf81D3705023]=10;
+        levels[0x3D4409a7Bad31F1d61be92B3E5c1C3be6BaF98fC]=10;
+        levels[0x00BE4D72bD5Aa20c2023c0EEF2e9949F338b1F9b]=10;
+        levels[0x1457A4a6293FF6889C64569990293bE9EDD5E72e]=10;
+        levels[0xddD8E3c2bB73752F76e01f0663dF68F783bBE7C6]=10;
+        levels[0x3e21e2Dc7d76b6CAb36c9F860423398311E9B19d]=10;
+        levels[0xd805c66a13165CB31b6e6Eb01F19b5b64bF76F88]=10;
+        levels[0x26E24bfBF08e3e6DEd77dADe76eCd95c150A626d]=10;
+        levels[0x4c63067EF1faaBe2d5D335A06719f7a841f2FeAb]=4;
+        levels[0x355b9cbfaedF2588342d798B919c2f9954BcFB9f]=10;
+        levels[0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0]=10;
+        levels[0x0709106AfF4cab1c5333741eBec887368F646537]=10;
+        levels[0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5]=4;
+        levels[0x605f1816391e6dBE27500920a14f65b26c2d0aE0]=10;
+        levels[0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb]=5;
+        levels[0x4e4Cd5a564ceF73252560B0253F6877778969d4B]=10;//idonthavereferal
+
+        Partecipants10.push(0x40568E2C3632C2C54ce7A76fE4A132c2D2785D2B);
+        Partecipants10.push(0xc18DccFB00bdd894DeB06Cce23586bb57978239b);
+        Partecipants10.push(0x74D2FFE54401F30538cfEBC524f64846F8BB037C);
+        Partecipants10.push(0x9A67cAc5FD39F9419aEc4dd0B6ACA690126B0f01);
+        Partecipants10.push(0xb8A676Fc48DA2Ea87cfB9d87A4310a14091dd101);
+        Partecipants10.push(0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E);
+        Partecipants4.push(0x0915E78b173B1c5920eaB355E5A4B95faBA44F7E);
+        Partecipants10.push(0x7D708F78Bb312BADBB6a2D9b10e643b6a2276C6e);
+        Partecipants5.push(0x255669BE628EF19fDA45cDE6fF04Ba9FF237bAEe);
+        Partecipants1.push(0x15f896D6E8F1259e5df709737b92B3B257623634);
+        Partecipants4.push(0xF21D3d687AE470C8040ed2CCC812aD8865378Eb8);
+        Partecipants10.push(0x40E85181e20A9eEC5B150B5999EDBf81D3705023);
+        Partecipants10.push(0x3D4409a7Bad31F1d61be92B3E5c1C3be6BaF98fC);
+        Partecipants10.push(0x00BE4D72bD5Aa20c2023c0EEF2e9949F338b1F9b);
+        Partecipants10.push(0x1457A4a6293FF6889C64569990293bE9EDD5E72e);
+        Partecipants10.push(0xddD8E3c2bB73752F76e01f0663dF68F783bBE7C6);
+        Partecipants10.push(0x3e21e2Dc7d76b6CAb36c9F860423398311E9B19d);
+        Partecipants10.push(0xd805c66a13165CB31b6e6Eb01F19b5b64bF76F88);
+        Partecipants10.push(0x26E24bfBF08e3e6DEd77dADe76eCd95c150A626d);
+        Partecipants4.push(0x4c63067EF1faaBe2d5D335A06719f7a841f2FeAb);
+        Partecipants10.push(0x355b9cbfaedF2588342d798B919c2f9954BcFB9f);
+        Partecipants10.push(0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0);
+        Partecipants10.push(0x0709106AfF4cab1c5333741eBec887368F646537);
+        Partecipants4.push(0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5);
+        Partecipants10.push(0x605f1816391e6dBE27500920a14f65b26c2d0aE0);
+        Partecipants5.push(0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb);
+        Partecipants10.push(0x4e4Cd5a564ceF73252560B0253F6877778969d4B);
     }
     
     modifier onlyOwner() { require(msg.sender==owner||msg.sender==0x9A7f101ECf784dc44D0E0336244bC179b94E8634,'OnlyOwner&Dev.');_; }//OK
-    modifier validPackage(uint package) { require(package>=0&&package<=9,'Invalid Package.');_; }//OK
+    modifier validPackage(uint package) { require(package>=1&&package<=10,'Invalid Package.');_; }//OK
     function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level; }//OK
-    
+    function setPartecipant(address partecipant, uint package) public {
+        if(package==1){ 
+            Partecipants1.push(partecipant);
+        } else if(package==2){
+            Partecipants2.push(partecipant);
+        } else if(package==3){
+            Partecipants3.push(partecipant);
+        } else if(package==4){
+            Partecipants4.push(partecipant);
+        } else if(package==5){
+            Partecipants5.push(partecipant);
+        } else if(package==6){
+            Partecipants6.push(partecipant);
+        } else if(package==7){
+            Partecipants7.push(partecipant);
+        } else if(package==8){
+            Partecipants8.push(partecipant);
+        } else if(package==9){
+            Partecipants9.push(partecipant);
+        } else if(package==10){
+            Partecipants10.push(partecipant);
+        }
+    }
     //RICORDATI LE TASSE
     function withdraw()
         public payable onlyOwner returns(bool){
@@ -368,24 +431,69 @@ contract ShibAfrica {
             return true;
         }
     function buyPackages(address payable referral, uint package) public payable {
-        levels[msg.sender]=package;
+        Partecipants[package]++;
+
+        require(levels[msg.sender]==package-1,'Invalid Level.');//OK
         if(levels[msg.sender]==0){
-            subscribed[msg.sender]=true;
             myReferral[msg.sender]=referral;
         }
+        levels[msg.sender]=package;
         require(myReferral[msg.sender]!=address(0),'Referral is 0 address.');//OK
         require(myReferral[msg.sender]!=msg.sender,"Referral can't be you.");//OK
-        require(levels[msg.sender]>=package,'Invalid Level.');//OK
         refCounter[myReferral[msg.sender]]++;
 
         address[] memory path;//OK
         path = new address[](2);//OK
         path[0]=WBNB;path[1]=SHIBAFRICA;//OK
 
-        uint referralAmount = 35*msg.value/100;//OK   //un utente può comprare più pacchetti ma solo consecutivamente
+        uint referralAmount = 30*msg.value/100;//OK   //un utente può comprare più pacchetti ma solo consecutivamente
         uint tokenAmount = 30*msg.value/100;//OK
-        uint ownerAmount = 20*msg.value/100;//OK
-        uint buybackAmount = 15*msg.value/100;//OK
+        uint ownerAmount = 15*msg.value/100;//OK
+        uint buybackAmount = 10*msg.value/100;//OK
+        uint redistributedAmount = 15*msg.value/100;
+        uint redistributedPartecipants = redistributedAmount/Partecipants[package];
+
+        if(package==1){ 
+            for(uint i=0;i<Partecipants1.length;i++){
+                payable(Partecipants1[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==2){
+            for(uint i=0;i<Partecipants2.length;i++){
+                payable(Partecipants2[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==3){
+            for(uint i=0;i<Partecipants3.length;i++){
+                payable(Partecipants3[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==4){
+            for(uint i=0;i<Partecipants4.length;i++){
+                payable(Partecipants4[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==5){
+            for(uint i=0;i<Partecipants5.length;i++){
+                payable(Partecipants5[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==6){
+            for(uint i=0;i<Partecipants6.length;i++){
+                payable(Partecipants6[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==7){
+            for(uint i=0;i<Partecipants7.length;i++){
+                payable(Partecipants7[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==8){
+            for(uint i=0;i<Partecipants8.length;i++){
+                payable(Partecipants8[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==9){
+            for(uint i=0;i<Partecipants9.length;i++){
+                payable(Partecipants9[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==10){
+            for(uint i=0;i<Partecipants10.length;i++){
+                payable(Partecipants10[i]).transfer(redistributedPartecipants);
+            }
+        }
         uint amountOutMin = 0;//OK
         if(levels[myReferral[msg.sender]]>=package){
             payable(myReferral[msg.sender]).transfer(referralAmount);//OK
@@ -409,6 +517,7 @@ contract ShibAfrica {
 
         referralsAddress[myReferral[msg.sender]][refCounter[myReferral[msg.sender]]]=msg.sender;
         referralsLevels[myReferral[msg.sender]][refCounter[myReferral[msg.sender]]]++;
+
         emit Buyed(package, myReferral[msg.sender]);
     }
 }

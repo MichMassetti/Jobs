@@ -1,7 +1,7 @@
 {
-  "main.css": "/static/css/main.902462e6.chunk.css",
-  "main.js": "/static/js/main.1f332f64.chunk.js",
-  "main.js.map": "/static/js/main.1f332f64.chunk.js.map",
+  "main.css": "/static/css/main.ba1c0e90.chunk.css",
+  "main.js": "/static/js/main.c341fad1.chunk.js",
+  "main.js.map": "/static/js/main.c341fad1.chunk.js.map",
   "static/js/1.ed8c9339.chunk.js": "/static/js/1.ed8c9339.chunk.js",
   "static/js/1.ed8c9339.chunk.js.map": "/static/js/1.ed8c9339.chunk.js.map",
   "static/js/2.953c52ef.chunk.js": "/static/js/2.953c52ef.chunk.js",
@@ -15,8 +15,8 @@
   "static/media/telegram.png": "/static/media/telegram.9091388b.png",
   "static/media/logo.svg": "/static/media/logo.be622899.svg",
   "static/media/tailwind.output.css": "/static/media/wallpaper.00832d38.jpeg",
-  "static/css/main.902462e6.chunk.css.map": "/static/css/main.902462e6.chunk.css.map",
+  "static/css/main.ba1c0e90.chunk.css.map": "/static/css/main.ba1c0e90.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.841b971b6b1eda339a9969b3e8e6a4c1.js": "/precache-manifest.841b971b6b1eda339a9969b3e8e6a4c1.js",
+  "precache-manifest.1e2e999bb63cb35e921e534afeb34ce6.js": "/precache-manifest.1e2e999bb63cb35e921e534afeb34ce6.js",
   "service-worker.js": "/service-worker.js"
 }
