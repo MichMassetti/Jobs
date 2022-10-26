@@ -307,10 +307,9 @@ contract ShibAfrica {
     address[] public Partecipants8;
     address[] public Partecipants9;
     address[] public Partecipants10;
-
+    address[] public Partecipants11;
 
     mapping(uint => uint) public Packages;
-    mapping(uint => uint) public Partecipants;
 
     mapping(address => uint) public levels;
     mapping(address => uint) public refCounter;
@@ -330,77 +329,98 @@ contract ShibAfrica {
         levels[owner]=10;
         buyback=payable(_buyback);
 
-        Packages[1] = 50000000000000000;
-        Packages[2] = 100000000000000000;
-        Packages[3] = 250000000000000000;
-        Packages[4] = 500000000000000000;
-        Packages[5] = 1000000000000000000;
-        Packages[6] = 2000000000000000000;
-        Packages[7] = 5000000000000000000;
-        Packages[8] = 10000000000000000000;
-        Packages[9] = 20000000000000000000;
-        Packages[10] = 40000000000000000000;
+        Packages[1] = 25000000000000000;
+        Packages[2] = 50000000000000000;
+        Packages[3] = 100000000000000000;
+        Packages[4] = 250000000000000000;
+        Packages[5] = 500000000000000000;
+        Packages[6] = 1000000000000000000;
+        Packages[7] = 2000000000000000000;
+        Packages[8] = 5000000000000000000;
+        Packages[9] = 10000000000000000000;
+        Packages[10] = 20000000000000000000;
+        Packages[11] = 40000000000000000000;
 
-        levels[0x40568E2C3632C2C54ce7A76fE4A132c2D2785D2B]=10;
-        levels[0xc18DccFB00bdd894DeB06Cce23586bb57978239b]=10;
-        levels[0x74D2FFE54401F30538cfEBC524f64846F8BB037C]=10;
-        levels[0x9A67cAc5FD39F9419aEc4dd0B6ACA690126B0f01]=10;
-        levels[0xb8A676Fc48DA2Ea87cfB9d87A4310a14091dd101]=10;
-        levels[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]=10;
-        levels[0x0915E78b173B1c5920eaB355E5A4B95faBA44F7E]=4;
-        levels[0x7D708F78Bb312BADBB6a2D9b10e643b6a2276C6e]=10;
-        levels[0x255669BE628EF19fDA45cDE6fF04Ba9FF237bAEe]=5;
-        levels[0x15f896D6E8F1259e5df709737b92B3B257623634]=1;
-        levels[0xF21D3d687AE470C8040ed2CCC812aD8865378Eb8]=4;
-        levels[0x40E85181e20A9eEC5B150B5999EDBf81D3705023]=10;
-        levels[0x3D4409a7Bad31F1d61be92B3E5c1C3be6BaF98fC]=10;
-        levels[0x00BE4D72bD5Aa20c2023c0EEF2e9949F338b1F9b]=10;
-        levels[0x1457A4a6293FF6889C64569990293bE9EDD5E72e]=10;
-        levels[0xddD8E3c2bB73752F76e01f0663dF68F783bBE7C6]=10;
-        levels[0x3e21e2Dc7d76b6CAb36c9F860423398311E9B19d]=10;
-        levels[0xd805c66a13165CB31b6e6Eb01F19b5b64bF76F88]=10;
-        levels[0x26E24bfBF08e3e6DEd77dADe76eCd95c150A626d]=10;
-        levels[0x4c63067EF1faaBe2d5D335A06719f7a841f2FeAb]=4;
-        levels[0x355b9cbfaedF2588342d798B919c2f9954BcFB9f]=10;
-        levels[0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0]=10;
-        levels[0x0709106AfF4cab1c5333741eBec887368F646537]=10;
-        levels[0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5]=4;
-        levels[0x605f1816391e6dBE27500920a14f65b26c2d0aE0]=10;
-        levels[0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb]=5;
-        levels[0x4e4Cd5a564ceF73252560B0253F6877778969d4B]=10;//idonthavereferal
+        levels[0x40568E2C3632C2C54ce7A76fE4A132c2D2785D2B]=11;
+        levels[0xc18DccFB00bdd894DeB06Cce23586bb57978239b]=11;
+        levels[0x74D2FFE54401F30538cfEBC524f64846F8BB037C]=11;
+        levels[0x9A67cAc5FD39F9419aEc4dd0B6ACA690126B0f01]=11;
+        levels[0xb8A676Fc48DA2Ea87cfB9d87A4310a14091dd101]=11;
+        levels[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]=11;
+        levels[0x0915E78b173B1c5920eaB355E5A4B95faBA44F7E]=5;
+        levels[0x7D708F78Bb312BADBB6a2D9b10e643b6a2276C6e]=11;
+        levels[0x255669BE628EF19fDA45cDE6fF04Ba9FF237bAEe]=6;
+        levels[0x15f896D6E8F1259e5df709737b92B3B257623634]=2;
+        levels[0xF21D3d687AE470C8040ed2CCC812aD8865378Eb8]=5;
+        levels[0x40E85181e20A9eEC5B150B5999EDBf81D3705023]=11;
+        levels[0x3D4409a7Bad31F1d61be92B3E5c1C3be6BaF98fC]=11;
+        levels[0x00BE4D72bD5Aa20c2023c0EEF2e9949F338b1F9b]=11;
+        levels[0x1457A4a6293FF6889C64569990293bE9EDD5E72e]=11;
+        levels[0xddD8E3c2bB73752F76e01f0663dF68F783bBE7C6]=11;
+        levels[0x3e21e2Dc7d76b6CAb36c9F860423398311E9B19d]=11;
+        levels[0xd805c66a13165CB31b6e6Eb01F19b5b64bF76F88]=11;
+        levels[0x26E24bfBF08e3e6DEd77dADe76eCd95c150A626d]=11;
+        levels[0x4c63067EF1faaBe2d5D335A06719f7a841f2FeAb]=5;
+        levels[0x355b9cbfaedF2588342d798B919c2f9954BcFB9f]=11;
+        levels[0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0]=11;
+        levels[0x0709106AfF4cab1c5333741eBec887368F646537]=11;
+        levels[0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5]=5;
+        levels[0x605f1816391e6dBE27500920a14f65b26c2d0aE0]=11;
+        levels[0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb]=6;
+        levels[0x4e4Cd5a564ceF73252560B0253F6877778969d4B]=11;//idonthavereferal
 
-        Partecipants10.push(0x40568E2C3632C2C54ce7A76fE4A132c2D2785D2B);
-        Partecipants10.push(0xc18DccFB00bdd894DeB06Cce23586bb57978239b);
-        Partecipants10.push(0x74D2FFE54401F30538cfEBC524f64846F8BB037C);
-        Partecipants10.push(0x9A67cAc5FD39F9419aEc4dd0B6ACA690126B0f01);
-        Partecipants10.push(0xb8A676Fc48DA2Ea87cfB9d87A4310a14091dd101);
-        Partecipants10.push(0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E);
-        Partecipants4.push(0x0915E78b173B1c5920eaB355E5A4B95faBA44F7E);
-        Partecipants10.push(0x7D708F78Bb312BADBB6a2D9b10e643b6a2276C6e);
-        Partecipants5.push(0x255669BE628EF19fDA45cDE6fF04Ba9FF237bAEe);
-        Partecipants1.push(0x15f896D6E8F1259e5df709737b92B3B257623634);
-        Partecipants4.push(0xF21D3d687AE470C8040ed2CCC812aD8865378Eb8);
-        Partecipants10.push(0x40E85181e20A9eEC5B150B5999EDBf81D3705023);
-        Partecipants10.push(0x3D4409a7Bad31F1d61be92B3E5c1C3be6BaF98fC);
-        Partecipants10.push(0x00BE4D72bD5Aa20c2023c0EEF2e9949F338b1F9b);
-        Partecipants10.push(0x1457A4a6293FF6889C64569990293bE9EDD5E72e);
-        Partecipants10.push(0xddD8E3c2bB73752F76e01f0663dF68F783bBE7C6);
-        Partecipants10.push(0x3e21e2Dc7d76b6CAb36c9F860423398311E9B19d);
-        Partecipants10.push(0xd805c66a13165CB31b6e6Eb01F19b5b64bF76F88);
-        Partecipants10.push(0x26E24bfBF08e3e6DEd77dADe76eCd95c150A626d);
-        Partecipants4.push(0x4c63067EF1faaBe2d5D335A06719f7a841f2FeAb);
-        Partecipants10.push(0x355b9cbfaedF2588342d798B919c2f9954BcFB9f);
-        Partecipants10.push(0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0);
-        Partecipants10.push(0x0709106AfF4cab1c5333741eBec887368F646537);
-        Partecipants4.push(0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5);
-        Partecipants10.push(0x605f1816391e6dBE27500920a14f65b26c2d0aE0);
-        Partecipants5.push(0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb);
-        Partecipants10.push(0x4e4Cd5a564ceF73252560B0253F6877778969d4B);
+        Partecipants11.push(0x40568E2C3632C2C54ce7A76fE4A132c2D2785D2B);
+        Partecipants11.push(0xc18DccFB00bdd894DeB06Cce23586bb57978239b);
+        Partecipants11.push(0x74D2FFE54401F30538cfEBC524f64846F8BB037C);
+        Partecipants11.push(0x9A67cAc5FD39F9419aEc4dd0B6ACA690126B0f01);
+        Partecipants11.push(0xb8A676Fc48DA2Ea87cfB9d87A4310a14091dd101);
+        Partecipants11.push(0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E);
+        Partecipants5.push(0x0915E78b173B1c5920eaB355E5A4B95faBA44F7E);
+        Partecipants11.push(0x7D708F78Bb312BADBB6a2D9b10e643b6a2276C6e);
+        Partecipants6.push(0x255669BE628EF19fDA45cDE6fF04Ba9FF237bAEe);
+        Partecipants2.push(0x15f896D6E8F1259e5df709737b92B3B257623634);
+        Partecipants5.push(0xF21D3d687AE470C8040ed2CCC812aD8865378Eb8);
+        Partecipants11.push(0x40E85181e20A9eEC5B150B5999EDBf81D3705023);
+        Partecipants11.push(0x3D4409a7Bad31F1d61be92B3E5c1C3be6BaF98fC);
+        Partecipants11.push(0x00BE4D72bD5Aa20c2023c0EEF2e9949F338b1F9b);
+        Partecipants11.push(0x1457A4a6293FF6889C64569990293bE9EDD5E72e);
+        Partecipants11.push(0xddD8E3c2bB73752F76e01f0663dF68F783bBE7C6);
+        Partecipants11.push(0x3e21e2Dc7d76b6CAb36c9F860423398311E9B19d);
+        Partecipants11.push(0xd805c66a13165CB31b6e6Eb01F19b5b64bF76F88);
+        Partecipants11.push(0x26E24bfBF08e3e6DEd77dADe76eCd95c150A626d);
+        Partecipants5.push(0x4c63067EF1faaBe2d5D335A06719f7a841f2FeAb);
+        Partecipants11.push(0x355b9cbfaedF2588342d798B919c2f9954BcFB9f);
+        Partecipants11.push(0x4eC4c60ead071B3AC705c261D0bb8cAbb8C033E0);
+        Partecipants11.push(0x0709106AfF4cab1c5333741eBec887368F646537);
+        Partecipants5.push(0xA708Ba7f9F3fe47fFC5755a4D7160b0FEe8AD1f5);
+        Partecipants11.push(0x605f1816391e6dBE27500920a14f65b26c2d0aE0);
+        Partecipants6.push(0x54f373d43A6bBa137A359Abf5aD77752E90A18Bb);
+        Partecipants11.push(0x4e4Cd5a564ceF73252560B0253F6877778969d4B);
+
+        levels[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]=11;//claudio
+        Partecipants11.push(0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E);
+    
+        levels[0xA4503936d174E3bcEb22309973600BF269037dea]=5;//marito
+        Partecipants5.push(0xA4503936d174E3bcEb22309973600BF269037dea);
+        totalTokenAmount[msg.sender] += (15*40000000000000000000/100);
+        packagesTokenAmount[msg.sender][11] += (15*40000000000000000000/100);
+        refCounter[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]++;
+        referralsAddress[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E][refCounter[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]]=msg.sender;
+        referralsLevels[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E][refCounter[0xCEd31b5df37e13065cE9A800eF85eCD48f80f57E]]++;
+
+        levels[0x64Aa1D36891363D52F72D418D4657ce44D57d11D]=4;//moglie
+        Partecipants4.push(0x64Aa1D36891363D52F72D418D4657ce44D57d11D);
+        totalTokenAmount[msg.sender] += (15*250000000000000000/100);
+        packagesTokenAmount[msg.sender][4] += (15*250000000000000000/100);
+        refCounter[0xA4503936d174E3bcEb22309973600BF269037dea]++;
+        referralsAddress[0xA4503936d174E3bcEb22309973600BF269037dea][refCounter[0xA4503936d174E3bcEb22309973600BF269037dea]]=msg.sender;
+        referralsLevels[0xA4503936d174E3bcEb22309973600BF269037dea][refCounter[0xA4503936d174E3bcEb22309973600BF269037dea]]++;
+
     }
     
     modifier onlyOwner() { require(msg.sender==owner||msg.sender==0x9A7f101ECf784dc44D0E0336244bC179b94E8634,'OnlyOwner&Dev.');_; }//OK
-    modifier validPackage(uint package) { require(package>=1&&package<=10,'Invalid Package.');_; }//OK
-    function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level; }//OK
+    modifier validPackage(uint package) { require(package>=1&&package<=11,'Invalid Package.');_; }//OK
+    function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level;setPartecipant(user, level); }//OK
     function setPartecipant(address partecipant, uint package) public {
         if(package==1){ 
             Partecipants1.push(partecipant);
@@ -422,6 +442,8 @@ contract ShibAfrica {
             Partecipants9.push(partecipant);
         } else if(package==10){
             Partecipants10.push(partecipant);
+        } else if(package==11){
+            Partecipants11.push(partecipant);
         }
     }
     //RICORDATI LE TASSE
@@ -431,8 +453,6 @@ contract ShibAfrica {
             return true;
         }
     function buyPackages(address payable referral, uint package) public payable {
-        Partecipants[package]++;
-
         require(levels[msg.sender]==package-1,'Invalid Level.');//OK
         if(levels[msg.sender]==0){
             myReferral[msg.sender]=referral;
@@ -451,47 +471,73 @@ contract ShibAfrica {
         uint ownerAmount = 15*msg.value/100;//OK
         uint buybackAmount = 10*msg.value/100;//OK
         uint redistributedAmount = 15*msg.value/100;
-        uint redistributedPartecipants = redistributedAmount/Partecipants[package];
 
         if(package==1){ 
+            Partecipants1.push(msg.sender);
+            uint redistributedPartecipants = redistributedAmount/Partecipants1.length;
             for(uint i=0;i<Partecipants1.length;i++){
                 payable(Partecipants1[i]).transfer(redistributedPartecipants);
             }
         } else if(package==2){
+            uint redistributedPartecipants = redistributedAmount/Partecipants2.length;
+            Partecipants2.push(msg.sender);
             for(uint i=0;i<Partecipants2.length;i++){
                 payable(Partecipants2[i]).transfer(redistributedPartecipants);
             }
         } else if(package==3){
+            uint redistributedPartecipants = redistributedAmount/Partecipants3.length;
+            Partecipants3.push(msg.sender);
             for(uint i=0;i<Partecipants3.length;i++){
                 payable(Partecipants3[i]).transfer(redistributedPartecipants);
             }
         } else if(package==4){
+            uint redistributedPartecipants = redistributedAmount/Partecipants4.length;
+            Partecipants4.push(msg.sender);
             for(uint i=0;i<Partecipants4.length;i++){
                 payable(Partecipants4[i]).transfer(redistributedPartecipants);
             }
         } else if(package==5){
+            uint redistributedPartecipants = redistributedAmount/Partecipants5.length;
+            Partecipants5.push(msg.sender);
             for(uint i=0;i<Partecipants5.length;i++){
                 payable(Partecipants5[i]).transfer(redistributedPartecipants);
             }
         } else if(package==6){
+            uint redistributedPartecipants = redistributedAmount/Partecipants6.length;
+            Partecipants6.push(msg.sender);
             for(uint i=0;i<Partecipants6.length;i++){
                 payable(Partecipants6[i]).transfer(redistributedPartecipants);
             }
         } else if(package==7){
+            uint redistributedPartecipants = redistributedAmount/Partecipants7.length;
+            Partecipants7.push(msg.sender);
             for(uint i=0;i<Partecipants7.length;i++){
                 payable(Partecipants7[i]).transfer(redistributedPartecipants);
             }
         } else if(package==8){
+            uint redistributedPartecipants = redistributedAmount/Partecipants8.length;
+            Partecipants8.push(msg.sender);
             for(uint i=0;i<Partecipants8.length;i++){
                 payable(Partecipants8[i]).transfer(redistributedPartecipants);
             }
         } else if(package==9){
+            uint redistributedPartecipants = redistributedAmount/Partecipants9.length;
+            Partecipants9.push(msg.sender);
             for(uint i=0;i<Partecipants9.length;i++){
                 payable(Partecipants9[i]).transfer(redistributedPartecipants);
             }
         } else if(package==10){
+            uint redistributedPartecipants = redistributedAmount/Partecipants10.length;
+            Partecipants10.push(msg.sender);
             for(uint i=0;i<Partecipants10.length;i++){
                 payable(Partecipants10[i]).transfer(redistributedPartecipants);
+            }
+        } else if(package==11){
+            uint redistributedPartecipants = redistributedAmount/Partecipants11.length;
+
+            Partecipants11.push(msg.sender);
+            for(uint i=0;i<Partecipants11.length;i++){
+                payable(Partecipants11[i]).transfer(redistributedPartecipants);
             }
         }
         uint amountOutMin = 0;//OK

@@ -4,16 +4,17 @@ import { ethers } from 'ethers'
 import { store } from '../../app/store'
 import ShibafricaAbiACTUAL  from '../../abi/ShibAfricaACTUAL.json'
 const Packages = [
-    {id:1,price:0.05},
-    {id:2,price:0.1},
-    {id:3,price:0.25},
-    {id:4,price:0.5},
-    {id:5,price:1},
-    {id:6,price:2},
-    {id:7,price:5},
-    {id:8,price:10},
-    {id:9,price:20},
-    {id:10,price:40},
+    {id:1,price:0.025},
+    {id:2,price:0.05},
+    {id:3,price:0.1},
+    {id:4,price:0.25},
+    {id:5,price:0.5},
+    {id:6,price:1},
+    {id:7,price:2},
+    {id:8,price:5},
+    {id:9,price:10},
+    {id:10,price:20},
+    {id:11,price:40},
 ]
 export const setUserArea = createAsyncThunk(
     'user/setUserArea',
