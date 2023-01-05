@@ -1,7 +1,6 @@
 import { useMoralis } from "react-moralis";
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { store } from '../../app/store';
 import { logIn } from '../../features/User/userAPI';
 import { useMoralisWeb3Api } from "react-moralis";
 

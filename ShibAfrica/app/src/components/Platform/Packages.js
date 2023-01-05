@@ -61,7 +61,7 @@ export default function Packages(props){
             setError('hidden');
         }
         if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
-            store.dispatch(getClaim({setRewards: setRewards}))
+            //store.dispatch(getClaim({setRewards: setRewards}))
         }
     })
     return(
