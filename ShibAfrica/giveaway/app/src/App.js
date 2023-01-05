@@ -8,7 +8,7 @@ function App() {
 
     const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
     const signer = provider.getSigner();
-    const Shibafrica = new ethers.Contract("0x45A1D815B3Cfd63956912148B799ada5f6640242", ShibAfrica.abi, signer);
+    const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibAfrica.abi, signer);
     console.log(Shibafrica)
     console.log(signer)
     const tx = await Shibafrica.connect(signer).setLevel(user, level,{gasLimit:60000})

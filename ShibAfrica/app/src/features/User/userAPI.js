@@ -113,6 +113,43 @@ export const BuyPackages = createAsyncThunk(
     }
 )
 
+export const getClaim = createAsyncThunk(
+    "user/getClaim",
+    async (data) => {     
+        
+        const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
+        const signer = provider.getSigner()
+        
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.abi, signer);
+        const rewards = Number(await Shibafrica.rewards(store.getState().user.address))
+        data.setRewards(rewards)
+       
+        return {status:'getClaimed'} }
+)
+
+export const claimRewards = createAsyncThunk(
+    "user/claimRewards",
+    async () => {     
+        
+        const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
+        const signer = provider.getSigner()
+        
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.abi, signer);
+        const rewards = Number(await Shibafrica.rewards(store.getState().user.address))
+        if(rewards>0) {
+            return await Shibafrica.claimRewards(
+                {value:0, gasLimit:1500000})
+                .then((res)=>{
+                    console.log(res)
+                    return { status:'claimed' }
+                }).catch((err)=>{
+                    console.log(err)
+                    return {status:'error'}
+                })
+        }
+         else { return {status:'notclaimed'} }
+    }
+)
 export const logIn = createAsyncThunk(
     "user/logIn",
     async ( data )=>{

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Package from './Package'
 import {store} from './../../app/store'
-import {BuyPackages} from '../../features/User/userAPI'
+import {BuyPackages, getClaim, claimRewards} from '../../features/User/userAPI'
 import {setErrorNull} from '../../features/User/userSlice'
 import {formatPrice} from '../../fun/formatter'
 import {authAddress} from '../../fun/authinput'
@@ -9,6 +9,7 @@ import logo from '../../public/logo.png'
 
 export default function Packages(props){
     const [PackageCart, setPackageCart] = useState(store.getState().user.totalPackageCart)
+    const [rewards, setRewards] = useState(0)
     const [UsdCart, setUsdCart] = useState(store.getState().user.totalUsdCart)
     const [TokenCart, setTokenCart] = useState(store.getState().user.totalTokenCart)
     const [TokenBurned, setTokenBurned] = useState(store.getState().user.totalTokenBurned)
@@ -59,8 +60,12 @@ export default function Packages(props){
             setState(true);
             setError('hidden');
         }
+        if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
+            store.dispatch(getClaim({setRewards: setRewards}))
+        }
     })
     return(
+        
        <div className="Platforms">
            <div className="w-full mt-16">
                 <div className="inline-block mr-1 xl:w-1/12"></div>
@@ -105,7 +110,8 @@ export default function Packages(props){
                     placeholder="Referral Address"
                 />
                 {
-                    (typeof(window.ethereum)!==undefined) ?
+                    (typeof(window.ethereum)!==undefined) ? 
+                    <>
                     <div className="inline-block">
                         <button
                             onClick={
@@ -120,6 +126,7 @@ export default function Packages(props){
                             className="p-4 mr-2 font-4xl text-white font-bold bg-green-600 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"
                             >Buy Package's
                         </button>
+                    
                         <button
                             onClick={
                                 ()=>{
@@ -134,6 +141,21 @@ export default function Packages(props){
                             >I haven't a Referral
                         </button>
                     </div>
+                    <br />
+                    <div className="inline-block">
+                        <button
+                            onClick={
+                                ()=>{
+                                    if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
+                                            store.dispatch(claimRewards())
+                                    } else { alert('Install Wallet Please or Connect It.') }
+                                }
+                            }
+                            className="p-4 mr-2 font-4xl text-white font-bold bg-green-600 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"
+                            >Claim : {rewards} BNB
+                        </button>
+                        </div>
+                       </>
                     :
                     <button
                     className="p-4 font-4xl text-black font-bold bg-gray-200 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"

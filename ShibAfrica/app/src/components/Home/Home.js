@@ -19,22 +19,27 @@ export default function Home(){
                 <div className="xl:w-7/12 mb-16 inline-block">
                     <div className="font-4xl xl:font-6xl text-yellow-300 font-bold mb-3">
                         <img src={logo} className="w-16 xl:w-20 h-16 xl:h-20 inline-block mr-2"/>
-                        <span className="">Earn <span className="font-6xl xl:font-8xl text-green-600">35%</span> from your 
+                        <span className="">Earn <span className="font-6xl xl:font-8xl text-green-600">20%</span> from your 
                         <span className="text-green-600"> Referral Account's</span></span>
                     </div>
                     <div className="font-4xl xl:font-6xl text-yellow-300 font-bold mb-3">
                         <img src={logo} className="w-16 xl:w-20 h-16 xl:h-20 inline-block mr-2"/>
-                        <span className="">Earn <span className="font-6xl xl:font-8xl text-green-600">30%</span> in 
+                        <span className="">Earn <span className="font-6xl xl:font-8xl text-green-600">25%</span> in 
                         <span className="text-green-600"> ShibAfrica Token</span></span>
                     </div>
                     <div className="font-4xl xl:font-6xl text-yellow-300 font-bold mb-3">
                         <img src={logo} className="w-16 xl:w-20 h-16 xl:h-20 inline-block mr-2"/>
-                        <span className="">Team <span className="font-6xl xl:font-8xl text-green-600h-16 ">20%</span> for 
+                        <span className="">Team <span className="font-6xl xl:font-8xl text-green-600h-16 ">15%</span> for 
                         <span className="text-green-600"> Supporting our Work</span></span>
                     </div>
                     <div className="font-4xl xl:font-6xl text-yellow-300 font-bold mb-3">
                         <img src={logo} className="w-16 xl:w-20 h-16 xl:h-20 inline-block mr-2"/>
-                        <span className="">Buy Back and Burn, Marketing, add Liquidity<span className="font-6xl xl:font-8xl text-green-600"> 15%</span> 
+                        <span className="">Buy Back and Burn, Marketing, add Liquidity<span className="font-6xl xl:font-8xl text-green-600"> 10%</span> 
+                        <span className="text-green-600"> </span></span>
+                    </div>
+                    <div className="font-4xl xl:font-6xl text-yellow-300 font-bold mb-3">
+                        <img src={logo} className="w-16 xl:w-20 h-16 xl:h-20 inline-block mr-2"/>
+                        <span className="">Passive Rewards in ShibAfrica Token<span className="font-6xl xl:font-8xl text-green-600"> 30%</span> 
                         <span className="text-green-600"> </span></span>
                     </div>
                 </div>
@@ -142,9 +147,6 @@ export default function Home(){
                     </div>
                     <div className="w-full text-2xl mb-1 pl-3 text-green-600">
                         BuyBack
-                    </div>
-                    <div className="w-full text-2xl mb-1 pl-3 text-yellow-400">
-                        Staking
                     </div>
                     <div className="w-full text-4xl mb-1 pl-3 text-green-600">
                         Charity
