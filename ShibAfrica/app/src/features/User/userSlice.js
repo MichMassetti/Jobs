@@ -7,6 +7,7 @@ const initialState = {
         token_balance:0,
         funds:'',
         level:0,
+        rewards:0,
         price:'',
         bnbprice:'',
         packages:[{id:0,price:0,burned:0}],
@@ -137,6 +138,7 @@ export const userSlice = createSlice({
             state.user.price=action.payload.price;
             state.user.bnbprice=action.payload.bnbprice;
             state.user.level=action.payload.level;
+            state.user.rewards=action.payload.rewards;
         },
         [BuyPackages.pending]:state=>{ 
             state.user.message.status='pending'

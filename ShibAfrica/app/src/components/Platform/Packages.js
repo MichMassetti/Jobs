@@ -9,7 +9,7 @@ import logo from '../../public/logo.png'
 
 export default function Packages(props){
     const [PackageCart, setPackageCart] = useState(store.getState().user.totalPackageCart)
-    const [rewards, setRewards] = useState(0)
+    const [rewards, setRewards] = useState(store.getState().user.rewards)
     const [UsdCart, setUsdCart] = useState(store.getState().user.totalUsdCart)
     const [TokenCart, setTokenCart] = useState(store.getState().user.totalTokenCart)
     const [TokenBurned, setTokenBurned] = useState(store.getState().user.totalTokenBurned)
@@ -152,7 +152,7 @@ export default function Packages(props){
                                 }
                             }
                             className="p-4 mr-2 font-4xl text-white font-bold bg-green-600 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"
-                            >Claim : {rewards} BNB
+                            >Claim : {rewards} SHF
                         </button>
                         </div>
                        </>

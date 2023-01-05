@@ -62,7 +62,7 @@ export default function Platform(){
                         className="text-xl border-2 border-solid border-red-600 hover:border-red-500 bg-yellow-500 hover:bg-yellow-400 rounded-md p-2 mb-4">{userAreaLabel}
                     </button>
                  </div>
-                 <div className="w-full bg-rose-600 border-red-800 border-2 border-solid p-2 text-white text-4xl text-center inline-block">Platform Under Mantainance</div>
+                 {/*<div className="w-full bg-rose-600 border-red-800 border-2 border-solid p-2 text-white text-4xl text-center inline-block">Platform Under Mantainance</div>*/}
             </div>
             {(!userArea)?<Packages />:<UserArea />}
             </div>

@@ -81,7 +81,7 @@ export const BuyPackages = createAsyncThunk(
             let package_ = packages[0];
             return await Shibafrica.buyPackages(data.referral,
                 package_,
-                {value:String(price_amount), gasLimit:1500000})
+                {value:String(price_amount), gasLimit:1000000})
                 .then((res)=>{
                     console.log(res)
                     return { status:'buyed' }
@@ -170,9 +170,10 @@ export const logIn = createAsyncThunk(
                 const price = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_SHIBAFRICA_TOKEN_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
                 const bnbprice = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_WBNB_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
                 const level = await Shibafrica.levels(user.get('ethAddress'));
-                
+                const rewards = Number(await Shibafrica.rewards(store.getState().user.address))
+
                 const funds = price.usdPrice*balance;
-                return {id:user.id, balance:balance, funds:funds, price:price.usdPrice, bnbprice:bnbprice.usdPrice, address:user.get('ethAddress'),level:level.toString(), message:{}}
+                return {id:user.id, balance:balance, funds:funds, price:price.usdPrice, bnbprice:bnbprice.usdPrice, address:user.get('ethAddress'),level:level.toString(), message:{}, rewards: rewards}
             });
     }
 )
