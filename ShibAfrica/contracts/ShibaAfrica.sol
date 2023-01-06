@@ -371,24 +371,79 @@ contract ShibAfrica {
         if(package==1){ 
             Partecipants1.push(partecipant);
         } else if(package==2){
+            Partecipants1.push(partecipant);
             Partecipants2.push(partecipant);
         } else if(package==3){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
             Partecipants3.push(partecipant);
         } else if(package==4){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
             Partecipants4.push(partecipant);
         } else if(package==5){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
+            Partecipants4.push(partecipant);
             Partecipants5.push(partecipant);
         } else if(package==6){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
+            Partecipants4.push(partecipant);
+            Partecipants5.push(partecipant);
             Partecipants6.push(partecipant);
         } else if(package==7){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
+            Partecipants4.push(partecipant);
+            Partecipants5.push(partecipant);
+            Partecipants6.push(partecipant);
             Partecipants7.push(partecipant);
         } else if(package==8){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
+            Partecipants4.push(partecipant);
+            Partecipants5.push(partecipant);
+            Partecipants6.push(partecipant);
+            Partecipants7.push(partecipant);
             Partecipants8.push(partecipant);
         } else if(package==9){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
+            Partecipants4.push(partecipant);
+            Partecipants5.push(partecipant);
+            Partecipants6.push(partecipant);
+            Partecipants7.push(partecipant);
+            Partecipants8.push(partecipant);
             Partecipants9.push(partecipant);
         } else if(package==10){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
+            Partecipants4.push(partecipant);
+            Partecipants5.push(partecipant);
+            Partecipants6.push(partecipant);
+            Partecipants7.push(partecipant);
+            Partecipants8.push(partecipant);
+            Partecipants9.push(partecipant);
             Partecipants10.push(partecipant);
         } else if(package==11){
+            Partecipants1.push(partecipant);
+            Partecipants2.push(partecipant);
+            Partecipants3.push(partecipant);
+            Partecipants4.push(partecipant);
+            Partecipants5.push(partecipant);
+            Partecipants6.push(partecipant);
+            Partecipants7.push(partecipant);
+            Partecipants8.push(partecipant);
+            Partecipants9.push(partecipant);
+            Partecipants10.push(partecipant);
             Partecipants11.push(partecipant);
         }
     }
@@ -488,7 +543,8 @@ contract ShibAfrica {
         }
         uint amountOutMin = 0;//OK
         if(levels[myReferral[msg.sender]]>=package){
-            payable(myReferral[msg.sender]).transfer(referralAmount);//OK
+            IPancakeRouter02(ROUTER).swapExactETHForTokensSupportingFeeOnTransferTokens{value:referralAmount}(amountOutMin, path, myReferral[msg.sender], block.timestamp+300);//OK
+            //payable(myReferral[msg.sender]).transfer(referralAmount);//OK
             referralsReferralAmount[myReferral[msg.sender]][refCounter[myReferral[msg.sender]]] += referralAmount;
         } else{
             buyback.transfer(referralAmount);//OK
