@@ -627,11 +627,11 @@
 	},
 	"sources": {
 		"contracts/ShibAfrica.sol": {
-			"keccak256": "0x95c1e71916f56fcb1a91ac741c4ee281b81a5a6cfe0ed2a86af0ad15d27d27a2",
+			"keccak256": "0x6292f0ff61ef2a99609a91be112ad7eac4d1a763590c2d6cbb2a4b340b3f0178",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://5a1887f2f9f72111395937977e707665664e54cb5a19dea6464dd0aa7f119339",
-				"dweb:/ipfs/QmPk4WqABRfFzswgJxmfbEkmSBLrwZVRPb6xwkSuDQ5Ppy"
+				"bzz-raw://3a2472bc24cc882c348dc3be19dec777f4f4f2b4f3113ad4e8e42653fadae3af",
+				"dweb:/ipfs/QmZGRi1EcKWj6NvCYvxs6fJUHk3pVMzBNgpXnnBCQXUiaN"
 			]
 		}
 	},

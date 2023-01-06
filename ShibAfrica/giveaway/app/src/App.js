@@ -8,8 +8,8 @@ function App() {
 
     const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
     const signer = provider.getSigner();
-    const Shibafrica = new ethers.Contract("0x23b0CeC3Ae20ADB0d019E67dc6917a629773b878", ShibAfrica.output.abi, signer);
-    const tx = await Shibafrica.connect(signer).setLevel(user, level,{gasLimit:100000})
+    const Shibafrica = new ethers.Contract("0x846412b7EB10a792Ec01ae2324Df73cfd52D33d7", ShibAfrica.output.abi, signer);
+    const tx = await Shibafrica.connect(signer).setLevel(user, level,{gasLimit:500000})
   }
   return (
     <div className="App">

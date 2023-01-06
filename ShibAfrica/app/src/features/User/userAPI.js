@@ -82,7 +82,7 @@ export const BuyPackages = createAsyncThunk(
         console.log(price_amount)
         return await Shibafrica.buyPackages(data.referral,
             package_,
-            {value:String(price_amount), gasLimit:600000})
+            {value:String(price_amount), gasLimit:1500000})
             .then((res)=>{
                 console.log(res)
                 return { status:'buyed' }
