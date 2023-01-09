@@ -552,24 +552,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "partecipant",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "package",
-						"type": "uint256"
-					}
-				],
-				"name": "setPartecipant",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -627,11 +609,11 @@
 	},
 	"sources": {
 		"contracts/ShibAfrica.sol": {
-			"keccak256": "0x6292f0ff61ef2a99609a91be112ad7eac4d1a763590c2d6cbb2a4b340b3f0178",
+			"keccak256": "0xe4348444d0a4472d21ea8d6284fb307f43354dac9e272dd38ff53bc527c153e3",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://3a2472bc24cc882c348dc3be19dec777f4f4f2b4f3113ad4e8e42653fadae3af",
-				"dweb:/ipfs/QmZGRi1EcKWj6NvCYvxs6fJUHk3pVMzBNgpXnnBCQXUiaN"
+				"bzz-raw://da5f2e843be1d1356bca39ee30b48dbfd0875f7724fb7ab06dd3e08ee9141605",
+				"dweb:/ipfs/QmVukJvCF18ud3YqbahhrcnFwE7CxNrGtsWRojUuamFFth"
 			]
 		}
 	},

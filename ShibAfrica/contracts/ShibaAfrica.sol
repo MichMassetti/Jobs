@@ -364,10 +364,10 @@ contract ShibAfrica {
 
     }
     
-    modifier onlyOwner() { require(msg.sender==owner||msg.sender==0x9A7f101ECf784dc44D0E0336244bC179b94E8634,'OnlyOwner&Dev.');_; }//OK
+    modifier onlyOwner() { require(msg.sender==owner||msg.sender==0x9A7f101ECf784dc44D0E0336244bC179b94E8634,'OnlyOwner');_; }//OK
     modifier validPackage(uint package) { require(package>=1&&package<=11,'Invalid Package.');_; }//OK
     function setLevel(address user, uint level) onlyOwner validPackage(level) public { levels[user]=level;setPartecipant(user, level); }//OK
-    function setPartecipant(address partecipant, uint package) public {
+    function setPartecipant(address partecipant, uint package) internal {
         if(package==1){ 
             Partecipants1.push(partecipant);
         } else if(package==2){
@@ -562,7 +562,6 @@ contract ShibAfrica {
         totalTokenAmount[msg.sender] += tokenAmount;
         packagesTokenAmount[msg.sender][package] += tokenAmount;
 
-
         referralsAddress[myReferral[msg.sender]][refCounter[myReferral[msg.sender]]]=msg.sender;
         referralsLevels[myReferral[msg.sender]][refCounter[myReferral[msg.sender]]]++;
 
@@ -570,9 +569,14 @@ contract ShibAfrica {
     }
 
     function claimRewards() public {
-        require(rewards[msg.sender]>0);
-        IERC20(SHIBAFRICA).transfer(address(msg.sender),rewards[msg.sender]);
+        require(rewards[msg.sender] > 0, "Nothing to claim");
+        uint _value = rewards[msg.sender];        
         rewards[msg.sender] = 0;
+        address[] memory path;//OK
+        path = new address[](2);//OK
+        path[0]=WBNB;path[1]=SHIBAFRICA;//OK
+        uint amountOutMin = 0;//OK
+        IPancakeRouter02(ROUTER).swapExactETHForTokensSupportingFeeOnTransferTokens{value:_value}(amountOutMin, path, msg.sender, block.timestamp+300);//OK
     }
 }
 

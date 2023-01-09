@@ -115,7 +115,7 @@ export const claimRewards = createAsyncThunk(
         const rewards = Number(await Shibafrica.rewards(store.getState().user.address))
         if(rewards>0) {
             return await Shibafrica.claimRewards(
-                {value:0, gasLimit:1500000})
+                {value:0, gasLimit:100000})
                 .then((res)=>{
                     console.log(res)
                     return { status:'claimed' }
