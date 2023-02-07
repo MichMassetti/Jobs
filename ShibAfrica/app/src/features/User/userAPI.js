@@ -3,6 +3,7 @@ import { signer } from '../../fun/ethers';
 import { ethers } from 'ethers'
 import { store } from '../../app/store'
 import ShibafricaAbiACTUAL  from '../../abi/ShibAfricaACTUAL.json'
+import { ShibafricaAbi } from '../../abi/ShibafricaAbi';
 const Packages = [
     {id:1,price:0.025},
     {id:2,price:0.05},
@@ -21,7 +22,7 @@ export const setUserArea = createAsyncThunk(
     async(data) =>{
             const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
             const signer = provider.getSigner();
-            const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.output.abi, signer);
+            const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
             console.log(Shibafrica);
             
             let refCounter;
@@ -70,7 +71,7 @@ export const BuyPackages = createAsyncThunk(
         const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
         const signer = provider.getSigner()
 
-        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.output.abi, signer);
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
         const mylevel = Number(await Shibafrica.levels(store.getState().user.address))
         for(let i=1;i<store.getState().user.packages.length;i++){
             price_amount+=Number(ethers.utils.parseUnits(String(store.getState().user.packages[i].price),'ether'))
@@ -82,7 +83,7 @@ export const BuyPackages = createAsyncThunk(
         console.log(price_amount)
         return await Shibafrica.buyPackages(data.referral,
             package_,
-            {value:String(price_amount), gasLimit:1500000})
+            {value:String(price_amount), gasLimit:1700000})
             .then((res)=>{
                 console.log(res)
                 return { status:'buyed' }
@@ -97,7 +98,7 @@ export const getClaim = createAsyncThunk(
         const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
         const signer = provider.getSigner()
         
-        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.output.abi, signer);
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
         const rewards = Number(await Shibafrica.rewards(store.getState().user.address))
         data.setRewards(rewards)
        
@@ -111,14 +112,14 @@ export const claimRewards = createAsyncThunk(
         const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
         const signer = provider.getSigner()
         
-        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.output.abi, signer);
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
         const rewards = Number(await Shibafrica.rewards(store.getState().user.address))
         if(rewards>0) {
             return await Shibafrica.claimRewards(
-                {value:0, gasLimit:100000})
+                {value:0, gasLimit:300000})
                 .then((res)=>{
                     console.log(res)
-                    return { status:'claimed' }
+                    return { status:'claimed', rewards: 0 }
                 }).catch((err)=>{
                     console.log(err)
                     return {status:'error'}
@@ -133,13 +134,13 @@ export const logIn = createAsyncThunk(
         const { authenticate, Web3Api } = data;
         const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
         const signer = provider.getSigner();
-        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbiACTUAL.output.abi, signer);
+        const Shibafrica = new ethers.Contract(process.env.REACT_APP_SHIBAFRICA_ADDRESS, ShibafricaAbi, signer);
         console.log('log')
-
-        return await authenticate({signingMessage:'Welcome to ShibAfrica.'})
-            .then(async (user)=>{
+        return await authenticate({signingMessage:'Welcome to ShibAfrica.'}).then(async (user)=>{
+                console.log("qua")
                 const Balances = await Web3Api.account.getTokenBalances({address:user.get('ethAddress'), chain:'bsc'});//TOGLIERE ADDRESS
                 let balance='';
+
                 Balances.map((token)=>{
                     if(token.symbol==process.env.REACT_APP_TOKEN_SYMBOL){
                         balance=token.balance
@@ -149,10 +150,13 @@ export const logIn = createAsyncThunk(
                 const bnbprice = await Web3Api.token.getTokenPrice({address:process.env.REACT_APP_WBNB_ADDRESS, chain:'bsc',exchange:'PancakeSwap2'})
                 const level = await Shibafrica.levels(user.get('ethAddress'));
                 const rewards = Number(await Shibafrica.rewards(user.get('ethAddress')));
-
+                const holders = await Shibafrica.returnHolders()                
                 const funds = price.usdPrice*balance;
-                return {id:user.id, balance:balance, funds:funds, price:price.usdPrice, bnbprice:bnbprice.usdPrice, address:user.get('ethAddress'),level:level.toString(), message:{}, rewards: rewards}
-            });
+                console.log(holders)
+                console.log(Number(holders[0]))
+                return {id:user.id, balance:balance, funds:funds, price:price.usdPrice, bnbprice:bnbprice.usdPrice, address:user.get('ethAddress'),level:level.toString(), message:{}, rewards: rewards, holders:holders.map(item=>{return Number(item)}),
+                        prova: "Ciao"}
+            }).catch((e) => console.log(e));
     }
 )
 export const logOut = createAsyncThunk(

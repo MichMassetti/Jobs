@@ -23,7 +23,8 @@ const initialState = {
         refCounter:0,
         refData:[],
         packagesAmounts:['0','0','0','0','0','0','0','0','0','0'],
-        message:{status:'logout', error:'', vendor_status:'',package_message:'',buy_status:'',user_area:false   }
+        message:{status:'logout', error:'', vendor_status:'',package_message:'',buy_status:'',user_area:false},
+        holders: new Array(11).fill(0),
     },
     packages:{
         1:'disabled',
@@ -139,6 +140,7 @@ export const userSlice = createSlice({
             state.user.bnbprice=action.payload.bnbprice;
             state.user.level=action.payload.level;
             state.user.rewards=action.payload.rewards;
+            state.user.holders=action.payload.holders;
         },
         [BuyPackages.pending]:state=>{ 
             state.user.message.status='pending'

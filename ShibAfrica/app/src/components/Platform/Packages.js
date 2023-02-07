@@ -9,12 +9,14 @@ import logo from '../../public/logo.png'
 
 export default function Packages(props){
     const [PackageCart, setPackageCart] = useState(store.getState().user.totalPackageCart)
-    const [rewards, setRewards] = useState(store.getState().user.rewards)
+    const [rewards, setRewards] = useState((store.getState().user.rewards)/10**18)
+    const [holders, setHolders] = useState(store.getState().user.holders)
     const [UsdCart, setUsdCart] = useState(store.getState().user.totalUsdCart)
     const [TokenCart, setTokenCart] = useState(store.getState().user.totalTokenCart)
     const [TokenBurned, setTokenBurned] = useState(store.getState().user.totalTokenBurned)
     const [ State, setState ] = useState(false);
-    const [ Error, setError ] = useState('hidden')
+    const [ Error, setError ] = useState('hidden')        
+    
 
     const params = new URLSearchParams(window.location.search);
     const referralAddress = params.get("referralLink")
@@ -60,10 +62,9 @@ export default function Packages(props){
             setState(true);
             setError('hidden');
         }
-        if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
-            //store.dispatch(getClaim({setRewards: setRewards}))
-        }
+
     })
+
     return(
         
        <div className="Platforms">
@@ -74,7 +75,7 @@ export default function Packages(props){
                         if(store.getState().user.level>=p.id){ buyable=false;alreadybuyed=true; }
                         else if(store.getState().user.level+1==p.id){ buyable=true;alreadybuyed=false; }
                         else if(store.getState().user.level<p.id){ buyable=false;alreadybuyed=false; }
-                        return <Package key={p.id} id={p.id} price={p.price} buyable={buyable} alreadybuyed={alreadybuyed}/>
+                        return <Package key={p.id} id={p.id} price={p.price} buyable={buyable} alreadybuyed={alreadybuyed} totalHolders={holders[Number(p.id)-1]}/>
                     })}
                 <div className="inline-block mr-1 xl:w-1/12"></div>   
              </div>
@@ -85,7 +86,7 @@ export default function Packages(props){
                         if(store.getState().user.level>=p.id){ buyable=false;alreadybuyed=true; }
                         else if(store.getState().user.level+1==p.id){ buyable=true;alreadybuyed=false; }
                         else if(store.getState().user.level<p.id){ buyable=false;alreadybuyed=false; }
-                        return <Package key={p.id} id={p.id} price={p.price} buyable={buyable} alreadybuyed={alreadybuyed}/>
+                        return <Package key={p.id} id={p.id} price={p.price} buyable={buyable} alreadybuyed={alreadybuyed} totalHolders={holders[Number(p.id)-1]}/>
                     })}
                 <div className="inline-block mr-1 xl:w-1/12"></div>   
              </div>
@@ -143,7 +144,7 @@ export default function Packages(props){
                     </div>
                     <br />
                     <div className="inline-block">
-                        <button
+                        <button disabled = {rewards === 0}
                             onClick={
                                 ()=>{
                                     if((store.getState().user.message.status=='login'||store.getState().user.message.status=='pending')&&typeof(window.ethereum)!==undefined){
@@ -152,7 +153,7 @@ export default function Packages(props){
                                 }
                             }
                             className="p-4 mr-2 font-4xl text-white font-bold bg-green-600 hover:bg-green-700 rounded-md border-4 border-solid border-red-400"
-                            >Claim : {rewards} SHF
+                            >Claim : {rewards} BNB
                         </button>
                         </div>
                        </>

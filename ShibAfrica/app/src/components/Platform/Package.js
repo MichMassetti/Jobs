@@ -56,6 +56,7 @@ export default function Package(props){
                 <div className=""> Package N.{props.id}</div>
                 <div className="text-green-600 font-bold text-sm">{Label}</div>
                 <div className="text-black text-sm"><span className="text-red-600">Value:</span> {props.price}BNB</div>
+                <div className="text-black text-sm"><span className="text-red-600">Number of holders:</span> {props.totalHolders}</div>
         </button>
     );
 }

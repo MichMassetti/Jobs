@@ -1,6 +1,7 @@
 import './App.css';
 import ShibAfrica from './artifacts/ShibAfricaACTUAL.json'
 import { ethers } from "ethers";
+import { ShibafricaAbi } from './artifacts/ShibafricaAbi';
 
 function App() {
   async function GiveAway(user, level) {
@@ -8,7 +9,7 @@ function App() {
 
     const provider = new ethers.providers.Web3Provider(window.ethereum, 'any')
     const signer = provider.getSigner();
-    const Shibafrica = new ethers.Contract("0xDd245bd9c179cA4CA737e2CC8E2562596c1D75a2", ShibAfrica.output.abi, signer);
+    const Shibafrica = new ethers.Contract("0x1d94d75FE2AD51B4Cc5c412DC73FeDe8E1CC3dB1", ShibafricaAbi, signer);
     const tx = await Shibafrica.connect(signer).setLevel(user, level,{gasLimit:500000})
   }
   return (
